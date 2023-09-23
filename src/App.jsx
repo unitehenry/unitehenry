@@ -1,6 +1,8 @@
 import {
   useTheme,
+  IconButton,
   Text,
+  Tooltip,
   Avatar,
   PointerBox,
   ThemeProvider,
@@ -10,8 +12,16 @@ import {
   Octicon,
   Link,
 } from '@primer/react';
-import { FlameIcon } from '@primer/octicons-react';
+import {
+  PeopleIcon,
+  LinkIcon,
+  MarkGithubIcon,
+  MailIcon,
+  FileIcon,
+  FlameIcon
+} from '@primer/octicons-react';
 import ProfileImg from './assets/profile.jpg';
+import content from './content.json';
 
 function Background({ children }) {
   const { theme } = useTheme();
@@ -51,12 +61,58 @@ function TimelineItem() {
   )
 }
 
+function DialogContent() {
+  function getSocialIcon(key) {
+    switch(key) {
+      case 'linkedin': {
+        return <Octicon icon={PeopleIcon} />;
+      }
+      case 'github': {
+        return <Octicon icon={MarkGithubIcon} />;
+      }
+      case 'email': {
+        return <Octicon icon={MailIcon} />;
+      }
+      case 'resume': {
+        return <Octicon icon={FileIcon} />;
+      }
+      default: {
+        return <Octicon icon={LinkIcon} />;
+      }
+    }
+  }
+  return (
+    <Box>
+      <Text>
+        { content['intro'] }
+      </Text>
+      <Box display="flex" mt={2} sx={{ gap: '10px' }}>
+        {
+          content['socials'].map(social => (
+            <Tooltip aria-label={social.title} direction="s" key={social.id}>
+              <IconButton
+                as={Link}
+                href={social.url}
+                target="_blank"
+                aria-label={social.title}
+                variant="default"
+                sx={{ borderRadius: '100%'}}>
+                { getSocialIcon(social.id) }
+              </IconButton>
+            </Tooltip>
+          ))
+        }
+      </Box>
+    </Box>
+  )
+}
+
 function DialogHeader() {
   const { theme } = useTheme();
   return (
     <Box display="flex">
       <Box display={['block', 'none', 'none']} position="relative" width="100%" sx={{
-          'svg path': { fill: theme.colors.canvas.subtle },
+          'svg[role=presentation] path': { fill: theme.colors.canvas.subtle },
           'svg': { left: '27px!important' }
         }}>
         <PointerBox
@@ -72,20 +128,20 @@ function DialogHeader() {
               <Link
                 href="#"
                 sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}}>
-                Henry Unite
+                { content['name'] }
               </Link>
-              last updated this on September 30th, 2023
+              { content['lastUpdatedSubtext'] }
             </Text>
           </Box>
           <Box
             p={3}
             borderTop={`${theme.borderWidths[1]} solid ${theme.colors.canvas.subtle}`}>
-              Content
+              <DialogContent />
           </Box>
         </PointerBox>
       </Box>
       <Box display={[ 'none', 'block', 'block' ]} position="relative" width="100%" sx={{
-          'svg path': { fill: theme.colors.canvas.subtle },
+          'svg[role=presentation] path': { fill: theme.colors.canvas.subtle },
         }}>
         <PointerBox
           minHeight={100}
@@ -100,15 +156,15 @@ function DialogHeader() {
               <Link
                 href="#"
                 sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}}>
-                Henry Unite
+                { content['name'] }
               </Link>
-              last updated this on September 30th, 2023
+              { content['lastUpdatedSubtext'] }
             </Text>
           </Box>
           <Box
             p={3}
             borderTop={`${theme.borderWidths[1]} solid ${theme.colors.canvas.subtle}`}>
-              Content
+            <DialogContent />
           </Box>
         </PointerBox>
       </Box>

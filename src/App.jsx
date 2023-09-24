@@ -177,7 +177,7 @@ function DialogHeader() {
             borderTopRightRadius={theme.radii[2]}>
             <Text sx={{ fontSize: theme.fontSizes[0] }}>
               <Link
-                href="#"
+                href="/"
                 sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}}>
                 { content['name'] }
               </Link>
@@ -205,7 +205,7 @@ function DialogHeader() {
             borderTopRightRadius={theme.radii[2]}>
             <Text sx={{ fontSize: theme.fontSizes[0] }}>
               <Link
-                href="#"
+                href="/"
                 sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}}>
                 { content['name'] }
               </Link>

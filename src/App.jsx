@@ -86,32 +86,6 @@ function TimelineItem({ content, type, date }) {
   )
 }
 
-function TimelineMilestone() {
-  return (
-    <Timeline.Item sx={{
-      '.TimelineItem-Badge': {
-        borderRadius: '5px',
-        backgroundImage: 'url("/profile.jpg")',
-        backgroundSize: 'contain'
-      }
-    }}>
-      <Timeline.Badge>
-      </Timeline.Badge>
-      <Timeline.Body>
-        <Link href="#" sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}} muted>
-          Monalisa
-        </Link>
-        created one <Link href="#" sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}} muted>
-          hot potato
-        </Link>
-        <Link href="#" color="fg.muted" muted>
-          Just now
-        </Link>
-      </Timeline.Body>
-    </Timeline.Item>
-  )
-}
-
 function DialogContent() {
   function getSocialIcon(key) {
     switch(key) {
@@ -307,7 +281,6 @@ function TimelineDialog({ badgeImage, name, date, url, content }) {
 }
 
 function TimelineBox({ children }) {
-  const { theme } = useTheme();
   return (
     <Box
       mt={3}

@@ -4,8 +4,22 @@ on:
     branches:
       - main
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - run: bun install
+      - run: bun run build
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: github-pages
+          path: dist
+          if-no-files-found: error
+  deploy:
+    runs-on: ubuntu-latest
+    need: build
     permissions:
       pages: write
       id-token: write
@@ -13,10 +27,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
-      - run: bun install
-      - run: bun run build
+
       - name: deploy
         id: deployment
         uses: actions/deploy-pages@v2

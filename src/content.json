@@ -1,6 +1,7 @@
 {
   "name": "Henry Unite",
-  "lastUpdatedSubtext": "last updated this on September 23rd, 2023",
+  "profileImage": "/profile.jpg",
+  "lastUpdatedSubtext": "last updated this on September 23rd 2023",
   "intro": "I am a highly motivated and experienced software engineer with a passion for building innovative and user-friendly products. I have over 5 years of experience in the tech industry, and I have worked on a variety of projects, including web applications, mobile apps, and enterprise software. I am skilled in a variety of programming languages and technologies, and I am always eager to learn new things.",
   "socials": [
     {
@@ -27,6 +28,50 @@
       "title": "Blog",
       "id": "blog",
       "url": "https://dev.to/unitehenry"
+    }
+  ],
+  "milestones": [
+    {
+      "badgeImage": "/satosa.png",
+      "name": "Satosa",
+      "url": "https://satosa.com",
+      "date": "2023-07-01",
+      "content": "Launched an MVP on Product Hunt and made it to the front page, by offering a service that manages agreements on your websites and apps with a low-friction click to accept e-signature alternative.<br /><br /><a target=\"_blank\" href=\"https://www.producthunt.com/products/satosa\">https://www.producthunt.com/products/satosa</a>"
+    },
+    {
+      "badgeImage": "/lula.jpeg",
+      "name": "LULA Technologies Inc.",
+      "url": "https://lula.com",
+      "date": "2023-04-01",
+      "content": "<strong>Senior Software Engineer</strong><ul><li>Revamped the internal claims processing and reduced the amount of time it took to file a claim from days to minutes, by integrating with different claims administrators' systems.</li><li>Automated the process of notifying customers about their claims, by using Twilio and Sendgrid to send communication about critical steps in their claims process.</li><li>Built a third party claims flow that reduced call volume by hundreds of hours, by building a single page web app for third parties to self-service their claim filings.</li></ul>"
+    },
+    {
+      "badgeImage": "/lula.jpeg",
+      "name": "LULA Technologies Inc.",
+      "url": "https://lula.com",
+      "date": "2021-09-01",
+      "content": "<strong>Full Stack Developer</strong><ul><li>Built the original MVP that scaled the company from hundreds to thousands of users, by bootstrapping the intitial version of the product on Firebase.</li><li>Automated the process of generating thousands of insurance documents which would manually take an average of 20 minutes to do, by building headless chrome automations to login and download documents from the carrier’s portal.</li><li>Designed a system for teams to deploy autonomously, by adopting micro-frontend architecture and backends for frontends</li></ul>"
+    },
+    {
+      "badgeImage": "/bts.png",
+      "name": "Bicycle Transit Systems",
+      "url": "https://www.bicycletransit.com/",
+      "date": "2020-12-01",
+      "content": "<strong>Full Stack Developer</strong><ul><li>Built monitoring to prevent over $10K worth of bike assets from being stolen on a monthly basis, by integrating with GPS modules to track bikes across multiple cities.</li><li>Prevented bikes from being stolen in major cities, by integrating with Twilio One-Time Passcode API upon purchasing a bike pass.</li></ul>"
+    },
+    {
+      "badgeImage": "/striven.jpeg",
+      "name": "Striven",
+      "url": "https://striven.com/",
+      "date": "2019-06-01",
+      "content": "Contributed and maintained an open source WYSIWYG editor as an internship project that made it to production and was adopted by the company I was working at.<br /><br /><a target=\"_blank\"href=\"https://github.com/striven-erp/striven-editor\">https://github.com/striven-erp/striven-editor</a>"
+    },
+    {
+      "badgeImage": "/striven.jpeg",
+      "name": "Striven",
+      "url": "https://striven.com/",
+      "date": "2019-05-01",
+      "content": "<strong>Software Developer</strong><ul><li>Created a text editor for an internship project that made it to production, by creating a WYSIWYG library from pure JavaScript and deployed as an npm module.</li><li>Implemented a search solution that indexed over a million records across multiple tenants, by deploying an Elasticsearch cluster using Docker.</li></ul>"
     }
   ]
 }

@@ -1,6 +1,7 @@
 import {
   useTheme,
   IconButton,
+  RelativeTime,
   Text,
   Tooltip,
   Avatar,
@@ -20,7 +21,6 @@ import {
   FileIcon,
   FlameIcon
 } from '@primer/octicons-react';
-import ProfileImg from './assets/profile.jpg';
 import content from './content.json';
 
 function Background({ children }) {
@@ -45,6 +45,32 @@ function TimelineItem() {
     <Timeline.Item>
       <Timeline.Badge>
         <Octicon icon={FlameIcon} />
+      </Timeline.Badge>
+      <Timeline.Body>
+        <Link href="#" sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}} muted>
+          Monalisa
+        </Link>
+        created one <Link href="#" sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}} muted>
+          hot potato
+        </Link>
+        <Link href="#" color="fg.muted" muted>
+          Just now
+        </Link>
+      </Timeline.Body>
+    </Timeline.Item>
+  )
+}
+
+function TimelineMilestone() {
+  return (
+    <Timeline.Item sx={{
+      '.TimelineItem-Badge': {
+        borderRadius: '5px',
+        backgroundImage: 'url("/profile.jpg")',
+        backgroundSize: 'contain'
+      }
+    }}>
+      <Timeline.Badge>
       </Timeline.Badge>
       <Timeline.Body>
         <Link href="#" sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}} muted>
@@ -172,6 +198,82 @@ function DialogHeader() {
   )
 }
 
+function TimelineDialog({ badgeImage, name, date, url, content }) {
+  const { theme } = useTheme();
+  return (
+    <Box display="flex">
+      <Box display={['block', 'none', 'none']} position="relative" width="100%" sx={{
+          'svg[role=presentation]': { display: 'none' },
+        }}>
+        <PointerBox
+          minHeight={100}
+          caret={'top-left'}>
+          <Box
+            p={1}
+            pl={2}
+            backgroundColor={theme.colors.canvas.subtle}
+            borderTopLeftRadius={theme.radii[2]}
+            borderTopRightRadius={theme.radii[2]}>
+            <Text sx={{ fontSize: theme.fontSizes[0] }}>
+              <Link
+                href={url}
+                target="_blank"
+                sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}}>
+                { name }
+              </Link>
+              { content['lastUpdatedSubtext'] }
+            </Text>
+          </Box>
+          <Box
+            p={3}
+            borderTop={`${theme.borderWidths[1]} solid ${theme.colors.canvas.subtle}`}
+            sx={{ 'a': { color: theme.colors.accent.fg } }}
+            dangerouslySetInnerHTML={{ '__html': content }} />
+        </PointerBox>
+      </Box>
+      <Box display={[ 'none', 'block', 'block' ]} position="relative" width="100%" sx={{
+          'svg[role=presentation] path': { fill: theme.colors.canvas.subtle },
+        }}>
+        <Avatar
+          sx={{ position: 'absolute', left: '-90px', top: '-20px' }}
+          src={badgeImage}
+          size={72}
+          square />
+        <PointerBox
+          minHeight={100}
+          caret={'left-top'}>
+          <Box
+            p={1}
+            pl={2}
+            backgroundColor={theme.colors.canvas.subtle}
+            borderTopLeftRadius={theme.radii[2]}
+            borderTopRightRadius={theme.radii[2]}>
+            <Text sx={{ fontSize: theme.fontSizes[0] }}>
+              <Link
+                href={url}
+                target="_blank"
+                sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}}>
+                { name }
+              </Link>
+              {
+                new Date(`${date}T00:00:00`).toLocaleDateString(undefined, {
+                  month: 'long',
+                  year: 'numeric'
+                })
+              }
+            </Text>
+          </Box>
+          <Box
+            p={3}
+            borderTop={`${theme.borderWidths[1]} solid ${theme.colors.canvas.subtle}`}
+            sx={{ 'a': { color: theme.colors.accent.fg } }}
+            dangerouslySetInnerHTML={{ '__html': content }} />
+        </PointerBox>
+      </Box>
+    </Box>
+  )
+}
+
 function TimelineBox({ children }) {
   const { theme } = useTheme();
   return (
@@ -194,12 +296,24 @@ export default function App() {
         <Background>
           <Box display="flex" flexDirection={['column', 'row', 'row']} mt={4}>
             <Box mr={3}>
-              <Avatar src={ProfileImg} size={72} />
+              <Avatar src={content['profileImage']} size={72} />
             </Box>
             <TimelineBox>
               <DialogHeader />
               <Timeline>
-                <TimelineItem />
+                {
+                  content['milestones'].map(milestone => (
+                    <>
+                      <TimelineItem />
+                      <TimelineDialog
+                        name={milestone.name}
+                        date={milestone.date}
+                        url={milestone.url}
+                        content={milestone.content}
+                        badgeImage={milestone.badgeImage} />
+                    </>
+                  ))
+                }
                 <TimelineItem />
               </Timeline>
             </TimelineBox>

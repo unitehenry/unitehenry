@@ -19,7 +19,7 @@ jobs:
           if-no-files-found: error
   deploy:
     runs-on: ubuntu-latest
-    need: build
+    needs: build
     permissions:
       pages: write
       id-token: write

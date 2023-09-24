@@ -12,7 +12,7 @@ jobs:
       - run: bun install
       - run: bun run build
       - name: upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-pages-artifact@v1
         with:
           name: github-pages
           path: dist
@@ -27,7 +27,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-
       - name: deploy
         id: deployment
         uses: actions/deploy-pages@v2

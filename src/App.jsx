@@ -22,7 +22,7 @@ import {
   FileBadgeIcon,
   TrophyIcon,
   MortarBoardIcon,
-  FlameIcon
+  FlameIcon,
 } from '@primer/octicons-react';
 import content from './content.json';
 
@@ -35,7 +35,8 @@ function Background({ children }) {
       minHeight="100vh"
       width="100%"
       display="flex"
-      justifyContent="center">
+      justifyContent="center"
+    >
       <Box width={[theme.sizes.small, theme.sizes.medium, theme.sizes.large]}>
         { children }
       </Box>
@@ -43,10 +44,10 @@ function Background({ children }) {
   );
 }
 
-function TimelineItem({ content, type, date }) {
+function TimelineItem({ timelineContent, type, date }) {
   const { theme } = useTheme();
   const getIcon = () => {
-    switch(type) {
+    switch (type) {
       case 'award': {
         return TrophyIcon;
       }
@@ -60,7 +61,7 @@ function TimelineItem({ content, type, date }) {
         return FlameIcon;
       }
     }
-  }
+  };
   return (
     <Timeline.Item>
       <Timeline.Badge>
@@ -70,25 +71,26 @@ function TimelineItem({ content, type, date }) {
         <Box display="flex" sx={{ gap: '5px' }}>
           <Box
             sx={{
-              'a': {
+              a: {
                 textDecoration: 'none',
-                color: theme.colors.fg.default
+                color: theme.colors.fg.default,
               },
               'a:hover': {
-                color: theme.colors.fg.muted
-              }
+                color: theme.colors.fg.muted,
+              },
             }}
-            dangerouslySetInnerHTML={{ '__html': content }} />
+            dangerouslySetInnerHTML={{ __html: timelineContent }}
+          />
           <RelativeTime date={new Date(`${date}T00:00:00`)} tense="past" />
         </Box>
       </Timeline.Body>
     </Timeline.Item>
-  )
+  );
 }
 
 function DialogContent() {
   function getSocialIcon(key) {
-    switch(key) {
+    switch (key) {
       case 'linkedin': {
         return <Octicon icon={PeopleIcon} />;
       }
@@ -109,11 +111,11 @@ function DialogContent() {
   return (
     <Box>
       <Text>
-        { content['intro'] }
+        { content.intro }
       </Text>
       <Box display="flex" mt={2} sx={{ gap: '10px' }}>
         {
-          content['socials'].map(social => (
+          content.socials.map((social) => (
             <Tooltip aria-label={social.title} direction="s" key={social.id}>
               <IconButton
                 as={Link}
@@ -121,7 +123,8 @@ function DialogContent() {
                 target="_blank"
                 aria-label={social.title}
                 variant="default"
-                sx={{ borderRadius: '100%'}}>
+                sx={{ borderRadius: '100%' }}
+              >
                 { getSocialIcon(social.id) }
               </IconButton>
             </Tooltip>
@@ -129,101 +132,129 @@ function DialogContent() {
         }
       </Box>
     </Box>
-  )
+  );
 }
 
 function DialogHeader() {
   const { theme } = useTheme();
   return (
     <Box display="flex">
-      <Box display={['block', 'none', 'none']} position="relative" width="100%" sx={{
+      <Box
+        display={['block', 'none', 'none']}
+        position="relative"
+        width="100%"
+        sx={{
           'svg[role=presentation] path': { fill: theme.colors.canvas.subtle },
-          'svg': { left: '27px!important' }
-        }}>
+          svg: { left: '27px!important' },
+        }}
+      >
         <PointerBox
           minHeight={100}
-          caret={'top-left'}>
+          caret="top-left"
+        >
           <Box
             p={1}
             pl={2}
             backgroundColor={theme.colors.canvas.subtle}
             borderTopLeftRadius={theme.radii[2]}
-            borderTopRightRadius={theme.radii[2]}>
+            borderTopRightRadius={theme.radii[2]}
+          >
             <Text sx={{ fontSize: theme.fontSizes[0] }}>
               <Link
                 href="/"
-                sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}}>
-                { content['name'] }
+                sx={{ fontWeight: 'bold', color: 'fg.default', mr: 1 }}
+              >
+                { content.name }
               </Link>
-              { content['lastUpdatedSubtext'] }
+              { content.lastUpdatedSubtext }
             </Text>
           </Box>
           <Box
             p={3}
-            borderTop={`${theme.borderWidths[1]} solid ${theme.colors.canvas.subtle}`}>
-              <DialogContent />
+            borderTop={`${theme.borderWidths[1]} solid ${theme.colors.canvas.subtle}`}
+          >
+            <DialogContent />
           </Box>
         </PointerBox>
       </Box>
-      <Box display={[ 'none', 'block', 'block' ]} position="relative" width="100%" sx={{
+      <Box
+        display={['none', 'block', 'block']}
+        position="relative"
+        width="100%"
+        sx={{
           'svg[role=presentation] path': { fill: theme.colors.canvas.subtle },
-        }}>
+        }}
+      >
         <PointerBox
           minHeight={100}
-          caret={'left-top'}>
+          caret="left-top"
+        >
           <Box
             p={1}
             pl={2}
             backgroundColor={theme.colors.canvas.subtle}
             borderTopLeftRadius={theme.radii[2]}
-            borderTopRightRadius={theme.radii[2]}>
+            borderTopRightRadius={theme.radii[2]}
+          >
             <Text sx={{ fontSize: theme.fontSizes[0] }}>
               <Link
                 href="/"
-                sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}}>
-                { content['name'] }
+                sx={{ fontWeight: 'bold', color: 'fg.default', mr: 1 }}
+              >
+                { content.name }
               </Link>
-              { content['lastUpdatedSubtext'] }
+              { content.lastUpdatedSubtext }
             </Text>
           </Box>
           <Box
             p={3}
-            borderTop={`${theme.borderWidths[1]} solid ${theme.colors.canvas.subtle}`}>
+            borderTop={`${theme.borderWidths[1]} solid ${theme.colors.canvas.subtle}`}
+          >
             <DialogContent />
           </Box>
         </PointerBox>
       </Box>
     </Box>
-  )
+  );
 }
 
-function TimelineDialog({ badgeImage, name, date, url, content }) {
+function TimelineDialog({
+  badgeImage, name, date, url, timelineContent,
+}) {
   const { theme } = useTheme();
   return (
     <Box display="flex">
-      <Box display={['block', 'none', 'none']} position="relative" width="100%" sx={{
+      <Box
+        display={['block', 'none', 'none']}
+        position="relative"
+        width="100%"
+        sx={{
           'svg[role=presentation]': { display: 'none' },
-        }}>
+        }}
+      >
         <PointerBox
           minHeight={100}
-          caret={'top-left'}>
+          caret="top-left"
+        >
           <Box
             p={1}
             pl={2}
             backgroundColor={theme.colors.canvas.subtle}
             borderTopLeftRadius={theme.radii[2]}
-            borderTopRightRadius={theme.radii[2]}>
+            borderTopRightRadius={theme.radii[2]}
+          >
             <Text sx={{ fontSize: theme.fontSizes[0] }}>
               <Link
                 href={url}
                 target="_blank"
-                sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}}>
+                sx={{ fontWeight: 'bold', color: 'fg.default', mr: 1 }}
+              >
                 { name }
               </Link>
               {
                 new Date(`${date}T00:00:00`).toLocaleDateString(undefined, {
                   month: 'long',
-                  year: 'numeric'
+                  year: 'numeric',
                 })
               }
             </Text>
@@ -231,40 +262,50 @@ function TimelineDialog({ badgeImage, name, date, url, content }) {
           <Box
             p={3}
             borderTop={`${theme.borderWidths[1]} solid ${theme.colors.canvas.subtle}`}
-            sx={{ 'a': { color: theme.colors.accent.fg } }}
-            dangerouslySetInnerHTML={{ '__html': content }} />
+            sx={{ a: { color: theme.colors.accent.fg } }}
+            dangerouslySetInnerHTML={{ __html: timelineContent }}
+          />
         </PointerBox>
       </Box>
-      <Box display={[ 'none', 'block', 'block' ]} position="relative" width="100%" sx={{
+      <Box
+        display={['none', 'block', 'block']}
+        position="relative"
+        width="100%"
+        sx={{
           'svg[role=presentation] path': { fill: theme.colors.canvas.subtle },
-        }}>
+        }}
+      >
         <Link href={url} target="_blank">
           <Avatar
             sx={{ position: 'absolute', left: '-90px', top: '-20px' }}
             src={badgeImage}
             size={72}
-            square />
+            square
+          />
         </Link>
         <PointerBox
           minHeight={100}
-          caret={'left-top'}>
+          caret="left-top"
+        >
           <Box
             p={1}
             pl={2}
             backgroundColor={theme.colors.canvas.subtle}
             borderTopLeftRadius={theme.radii[2]}
-            borderTopRightRadius={theme.radii[2]}>
+            borderTopRightRadius={theme.radii[2]}
+          >
             <Text sx={{ fontSize: theme.fontSizes[0] }}>
               <Link
                 href={url}
                 target="_blank"
-                sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}}>
+                sx={{ fontWeight: 'bold', color: 'fg.default', mr: 1 }}
+              >
                 { name }
               </Link>
               {
                 new Date(`${date}T00:00:00`).toLocaleDateString(undefined, {
                   month: 'long',
-                  year: 'numeric'
+                  year: 'numeric',
                 })
               }
             </Text>
@@ -272,12 +313,13 @@ function TimelineDialog({ badgeImage, name, date, url, content }) {
           <Box
             p={3}
             borderTop={`${theme.borderWidths[1]} solid ${theme.colors.canvas.subtle}`}
-            sx={{ 'a': { color: theme.colors.accent.fg } }}
-            dangerouslySetInnerHTML={{ '__html': content }} />
+            sx={{ a: { color: theme.colors.accent.fg } }}
+            dangerouslySetInnerHTML={{ __html: timelineContent }}
+          />
         </PointerBox>
       </Box>
     </Box>
-  )
+  );
 }
 
 function TimelineBox({ children }) {
@@ -285,27 +327,28 @@ function TimelineBox({ children }) {
     <Box
       mt={3}
       pb={4}
-      width="100%">
-        { children }
+      width="100%"
+    >
+      { children }
     </Box>
-  )
+  );
 }
 
 export default function App() {
-
   const timelineItems = [
-    ...content['timeline'].map(timeline => ({
+    ...content.timeline.map((timeline) => ({
       key: timeline.content + timeline.date,
       date: new Date(`${timeline.date}T00:00:00`),
       component: (key) => (
         <TimelineItem
-          content={timeline.content}
+          timelineContent={timeline.content}
           date={timeline.date}
           type={timeline.type}
-          key={key} />
-      )
+          key={key}
+        />
+      ),
     })),
-    ...content['milestones'].map(milestone => ({
+    ...content.milestones.map((milestone) => ({
       key: milestone.name + milestone.date,
       date: new Date(`${milestone.date}T00:00:00`),
       component: (key) => (
@@ -315,11 +358,12 @@ export default function App() {
             name={milestone.name}
             date={milestone.date}
             url={milestone.url}
-            content={milestone.content}
-            badgeImage={milestone.badgeImage} />
+            timelineContent={milestone.content}
+            badgeImage={milestone.badgeImage}
+          />
         </Box>
-      )
-    }))
+      ),
+    })),
   ];
 
   return (
@@ -329,7 +373,7 @@ export default function App() {
           <Box display="flex" flexDirection={['column', 'row', 'row']} mt={4}>
             <Box mr={3}>
               <Link href="/">
-                <Avatar src={content['profileImage']} size={72} />
+                <Avatar src={content.profileImage} size={72} />
               </Link>
             </Box>
             <TimelineBox>
@@ -337,8 +381,8 @@ export default function App() {
               <Timeline>
                 {
                   timelineItems
-                    .sort((a, b) => a.date < b.date ? 1 : -1)
-                    .map(item => item.component(item.key))
+                    .sort((a, b) => (a.date < b.date ? 1 : -1))
+                    .map((item) => item.component(item.key))
                 }
               </Timeline>
             </TimelineBox>
@@ -346,5 +390,5 @@ export default function App() {
         </Background>
       </BaseStyles>
     </ThemeProvider>
-  )
+  );
 }

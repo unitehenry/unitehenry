@@ -172,6 +172,21 @@ function DialogHeader() {
   )
 }
 
+function TimelineBox({ children }) {
+  const { theme } = useTheme();
+  return (
+    <Box
+      mt={3}
+      width="100%">
+        { children }
+      <Box
+        height={2}
+        backgroundColor={theme.colors.canvas.subtle}
+        borderRadius={theme.radii[3]} />
+    </Box>
+  )
+}
+
 export default function App() {
   return (
     <ThemeProvider colorMode="auto" nightScheme="dark_dimmed">
@@ -181,13 +196,13 @@ export default function App() {
             <Box mr={3}>
               <Avatar src={ProfileImg} size={72} />
             </Box>
-            <Box mt={3} width="100%">
+            <TimelineBox>
               <DialogHeader />
               <Timeline>
                 <TimelineItem />
                 <TimelineItem />
               </Timeline>
-            </Box>
+            </TimelineBox>
           </Box>
         </Background>
       </BaseStyles>

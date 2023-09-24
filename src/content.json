@@ -1,7 +1,7 @@
 {
   "name": "Henry Unite",
   "profileImage": "/profile.jpg",
-  "lastUpdatedSubtext": "last updated this on September 23rd 2023",
+  "lastUpdatedSubtext": "last updated this on September 24th 2023",
   "intro": "I am a highly motivated and experienced software engineer with a passion for building innovative and user-friendly products. I have over 5 years of experience in the tech industry, and I have worked on a variety of projects, including web applications, mobile apps, and enterprise software. I am skilled in a variety of programming languages and technologies, and I am always eager to learn new things.",
   "socials": [
     {
@@ -28,6 +28,73 @@
       "title": "Blog",
       "id": "blog",
       "url": "https://dev.to/unitehenry"
+    }
+  ],
+  "timeline": [
+    {
+      "type": "award",
+      "content": "<a href=\"/raving-fan-1.pdf\" target=\"_blank\">Raving Fan Merit Award</a>",
+      "date": "2019-09-25"
+    },
+    {
+      "type": "award",
+      "content": "<a href=\"/raving-fan-2.pdf\" target=\"_blank\">Raving Fan Merit Award</a>",
+      "date": "2020-06-27"
+    },
+    {
+      "type": "award",
+      "content": "<a href=\"https://devpost.com/software/study-oasis\" target=\"_blank\">HackRU Fall 2019 Education Track Winner</a>",
+      "date": "2019-10-20"
+    },
+    {
+      "type": "education",
+      "content": "<a href=\"https://rcsj.edu/\" target=\"_blank\">Associate in Science, Computer Science Degree</a>",
+      "date": "2020-05-01"
+    },
+    {
+      "type": "certification",
+      "content": "<a href=\"https://www.freecodecamp.org/certification/fccc1c4406e-646e-478d-a7b6-771d8c2139ba/full-stack\" target=\"_blank\">Free Code Camp Full Stack Developer Certification</a>",
+      "date": "2020-04-29"
+    },
+    {
+      "type": "certification",
+      "content": "<a href=\"https://courses.edx.org/certificates/f24242bb00934b47a74ffb5794c61763\" target=\"_blank\">How to Code: Simple Data</a>",
+      "date": "2021-06-01"
+    },
+    {
+      "type": "certification",
+      "content": "<a href=\"https://courses.edx.org/certificates/245b2bf723884664889f620082408d31\" target=\"_blank\">How to Code: Complex Data</a>",
+      "date": "2022-08-01"
+    },
+    {
+      "type": "certification",
+      "content": "<a href=\"https://www.coursera.org/account/accomplishments/certificate/X2JQAKBJJ4YF\" target=\"_blank\">Programming Languages, Part A</a>",
+      "date": "2023-01-21"
+    },
+    {
+      "type": "certification",
+      "content": "<a href=\"https://www.coursera.org/account/accomplishments/certificate/A4ZHU2NDAQ9J\" target=\"_blank\">Programming Languages, Part B</a>",
+      "date": "2023-06-15"
+    },
+    {
+      "type": "certification",
+      "content": "<a href=\"https://www.coursera.org/account/accomplishments/certificate/N52PTQKEPWS4\" target=\"_blank\">Programming Languages, Part C</a>",
+      "date": "2023-06-16"
+    },
+    {
+      "type": "certification",
+      "content": "<a href=\"https://www.coursera.org/account/accomplishments/certificate/UF6QGJRUAWKE\" target=\"_blank\">Object-Oriented Design</a>",
+      "date": "2023-07-24"
+    },
+    {
+      "type": "certification",
+      "content": "<a href=\"https://www.coursera.org/account/accomplishments/certificate/8JJ6UPD8M9U3\" target=\"_blank\">Software Architecture</a>",
+      "date": "2023-08-22"
+    },
+    {
+      "type": "certification",
+      "content": "<a href=\"https://www.coursera.org/account/accomplishments/certificate/ZWER6282CWPD\" target=\"_blank\">Design Patterns</a>",
+      "date": "2023-08-13"
     }
   ],
   "milestones": [

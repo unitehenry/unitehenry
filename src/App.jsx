@@ -19,6 +19,9 @@ import {
   MarkGithubIcon,
   MailIcon,
   FileIcon,
+  FileBadgeIcon,
+  TrophyIcon,
+  MortarBoardIcon,
   FlameIcon
 } from '@primer/octicons-react';
 import content from './content.json';
@@ -40,22 +43,44 @@ function Background({ children }) {
   );
 }
 
-function TimelineItem() {
+function TimelineItem({ content, type, date }) {
+  const { theme } = useTheme();
+  const getIcon = () => {
+    switch(type) {
+      case 'award': {
+        return TrophyIcon;
+      }
+      case 'certification': {
+        return FileBadgeIcon;
+      }
+      case 'education': {
+        return MortarBoardIcon;
+      }
+      default: {
+        return FlameIcon;
+      }
+    }
+  }
   return (
     <Timeline.Item>
       <Timeline.Badge>
-        <Octicon icon={FlameIcon} />
+        <Octicon icon={getIcon()} />
       </Timeline.Badge>
       <Timeline.Body>
-        <Link href="#" sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}} muted>
-          Monalisa
-        </Link>
-        created one <Link href="#" sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}} muted>
-          hot potato
-        </Link>
-        <Link href="#" color="fg.muted" muted>
-          Just now
-        </Link>
+        <Box display="flex" sx={{ gap: '5px' }}>
+          <Box
+            sx={{
+              'a': {
+                textDecoration: 'none',
+                color: theme.colors.fg.default
+              },
+              'a:hover': {
+                color: theme.colors.fg.muted
+              }
+            }}
+            dangerouslySetInnerHTML={{ '__html': content }} />
+          <RelativeTime date={new Date(`${date}T00:00:00`)} tense="past" />
+        </Box>
       </Timeline.Body>
     </Timeline.Item>
   )
@@ -221,7 +246,12 @@ function TimelineDialog({ badgeImage, name, date, url, content }) {
                 sx={{fontWeight: 'bold', color: 'fg.default', mr: 1}}>
                 { name }
               </Link>
-              { content['lastUpdatedSubtext'] }
+              {
+                new Date(`${date}T00:00:00`).toLocaleDateString(undefined, {
+                  month: 'long',
+                  year: 'numeric'
+                })
+              }
             </Text>
           </Box>
           <Box
@@ -234,11 +264,13 @@ function TimelineDialog({ badgeImage, name, date, url, content }) {
       <Box display={[ 'none', 'block', 'block' ]} position="relative" width="100%" sx={{
           'svg[role=presentation] path': { fill: theme.colors.canvas.subtle },
         }}>
-        <Avatar
-          sx={{ position: 'absolute', left: '-90px', top: '-20px' }}
-          src={badgeImage}
-          size={72}
-          square />
+        <Link href={url} target="_blank">
+          <Avatar
+            sx={{ position: 'absolute', left: '-90px', top: '-20px' }}
+            src={badgeImage}
+            size={72}
+            square />
+        </Link>
         <PointerBox
           minHeight={100}
           caret={'left-top'}>
@@ -279,42 +311,62 @@ function TimelineBox({ children }) {
   return (
     <Box
       mt={3}
+      pb={4}
       width="100%">
         { children }
-      <Box
-        height={2}
-        backgroundColor={theme.colors.canvas.subtle}
-        borderRadius={theme.radii[3]} />
     </Box>
   )
 }
 
 export default function App() {
+
+  const timelineItems = [
+    ...content['timeline'].map(timeline => ({
+      key: timeline.content + timeline.date,
+      date: new Date(`${timeline.date}T00:00:00`),
+      component: (key) => (
+        <TimelineItem
+          content={timeline.content}
+          date={timeline.date}
+          type={timeline.type}
+          key={key} />
+      )
+    })),
+    ...content['milestones'].map(milestone => ({
+      key: milestone.name + milestone.date,
+      date: new Date(`${milestone.date}T00:00:00`),
+      component: (key) => (
+        <Box key={key}>
+          <Timeline.Item />
+          <TimelineDialog
+            name={milestone.name}
+            date={milestone.date}
+            url={milestone.url}
+            content={milestone.content}
+            badgeImage={milestone.badgeImage} />
+        </Box>
+      )
+    }))
+  ];
+
   return (
     <ThemeProvider colorMode="auto" nightScheme="dark_dimmed">
       <BaseStyles>
         <Background>
           <Box display="flex" flexDirection={['column', 'row', 'row']} mt={4}>
             <Box mr={3}>
-              <Avatar src={content['profileImage']} size={72} />
+              <Link href="/">
+                <Avatar src={content['profileImage']} size={72} />
+              </Link>
             </Box>
             <TimelineBox>
               <DialogHeader />
               <Timeline>
                 {
-                  content['milestones'].map(milestone => (
-                    <>
-                      <TimelineItem />
-                      <TimelineDialog
-                        name={milestone.name}
-                        date={milestone.date}
-                        url={milestone.url}
-                        content={milestone.content}
-                        badgeImage={milestone.badgeImage} />
-                    </>
-                  ))
+                  timelineItems
+                    .sort((a, b) => a.date < b.date ? 1 : -1)
+                    .map(item => item.component(item.key))
                 }
-                <TimelineItem />
               </Timeline>
             </TimelineBox>
           </Box>

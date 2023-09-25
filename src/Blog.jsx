@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTheme, Box, Heading, Link, Text } from '@primer/react';
+import hljs from 'highlight.js';
 import content from './content.json';
+import 'highlight.js/styles/github.css';
 
 export default function Blog() {
 
@@ -16,7 +18,10 @@ export default function Blog() {
   useEffect(() => {
     fetch(blog.contentUrl)
       .then(res => res.text().then(txt => setBlogContent(txt)))
+    hljs.highlightAll();
   })
+
+  console.log(theme);
 
   return (
     <Box py={4}>
@@ -38,6 +43,13 @@ export default function Blog() {
           },
           img: {
             maxWidth: '100%',
+          },
+          code: {
+            borderWidth: theme.borderWidths[1],
+            borderColor: theme.colors.border.default,
+            borderStyle: 'solid',
+            borderRadius: theme.radii[2],
+            maxWidth: '90vw'
           },
           'p:has(img)': {
             display: 'flex',

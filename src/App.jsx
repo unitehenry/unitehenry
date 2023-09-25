@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   useTheme,
   IconButton,
@@ -23,6 +24,7 @@ import {
   MortarBoardIcon,
   FlameIcon,
 } from '@primer/octicons-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import content from './content.json';
 
 function TimelineItem({ timelineContent, type, date }) {
@@ -319,6 +321,16 @@ function TimelineBox({ children }) {
 }
 
 export default function App() {
+  const navigate = useNavigate();
+  const { search } = useLocation();
+
+  useEffect(() => {
+    if (search) {
+      const path = search.split('?').pop();
+      navigate(path);
+    }
+  });
+
   const timelineItems = [
     ...content.timeline.map((timeline) => ({
       key: timeline.content + timeline.date,

@@ -1,9 +1,29 @@
-<p>Welcome to a tour of my <code>.zshrc</code> file! I thought it would be fun to take a dive into the different tools I use to elevate my developer game.</p>
-<p><strong>If you want to see my whole config, I keep all my setup files on GitHub:</strong> <a href="https://github.com/unitehenry/config">https://github.com/unitehenry/config</a></p>
+<p>
+  Welcome to a tour of my <code>.zshrc</code> file! I thought it would be fun to
+  take a dive into the different tools I use to elevate my developer game.
+</p>
+<p>
+  <strong
+    >If you want to see my whole config, I keep all my setup files on
+    GitHub:</strong
+  >
+  <a href="https://github.com/unitehenry/config"
+    >https://github.com/unitehenry/config</a
+  >
+</p>
 <h2 id="tools-i-use">Tools I Use</h2>
-<p>Before we dive into my configuration, here are the tools I use that help me speed up my tasks as a developer:</p>
-<p><code>fzf</code> | <a href="https://github.com/junegunn/fzf">Fuzzy File Finder</a></p>
-<p><code>pandoc</code> | <a href="https://pandoc.org">Pandoc Document Converter</a></p>
+<p>
+  Before we dive into my configuration, here are the tools I use that help me
+  speed up my tasks as a developer:
+</p>
+<p>
+  <code>fzf</code> |
+  <a href="https://github.com/junegunn/fzf">Fuzzy File Finder</a>
+</p>
+<p>
+  <code>pandoc</code> |
+  <a href="https://pandoc.org">Pandoc Document Converter</a>
+</p>
 <p><code>brew</code> | <a href="https://brew.sh">MacOS Package Manager</a></p>
 <h2 id="the-variables">The Variables</h2>
 <pre><code class="lang-sh"><span class="hljs-comment"># EDITOR</span>
@@ -18,9 +38,13 @@
 </code></pre>
 <p>Pretty straightforward, but these are what I use to:</p>
 <ul>
-<li>Default editing to be opened in vim</li>
-<li>Reference my iCloud directory which I use to keep all my personal files</li>
-<li>A quick reference to where I keep all my work repositories, notes, projects</li>
+  <li>Default editing to be opened in vim</li>
+  <li>
+    Reference my iCloud directory which I use to keep all my personal files
+  </li>
+  <li>
+    A quick reference to where I keep all my work repositories, notes, projects
+  </li>
 </ul>
 <h2 id="credentials">Credentials</h2>
 <pre><code class="lang-sh"><span class="hljs-comment"># Credentials Fetcher</span>
@@ -38,7 +62,11 @@
   <span class="hljs-built_in">cd</span> <span class="hljs-variable">$PASS_BACK_PATH</span> &amp;&amp; <span class="hljs-built_in">unset</span> PASS_BACK_PATH;
 }
 </code></pre>
-<p>There are so many chrome extensions, keychains, any ways to access your passwords. I personally encrypt my passwords in my cloud storage so I can access them by utilizing a <code>aes-256-cbc</code> decryption tool.</p>
+<p>
+  There are so many chrome extensions, keychains, any ways to access your
+  passwords. I personally encrypt my passwords in my cloud storage so I can
+  access them by utilizing a <code>aes-256-cbc</code> decryption tool.
+</p>
 <h2 id="file-formatting">File Formatting</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">## Code Formatter</span>
 <span class="hljs-keyword">function</span> format-<span class="hljs-function"><span class="hljs-title">file</span></span>() {
@@ -63,24 +91,40 @@
   <span class="hljs-built_in">unset</span> FILENAME; <span class="hljs-built_in">unset</span> EXTENSION;
 }
 </code></pre>
-<p>File formatter that handles the languages I use on a day-to-day basis. It gets the job done for most file types including JSON, YAML, and even markdown.</p>
+<p>
+  File formatter that handles the languages I use on a day-to-day basis. It gets
+  the job done for most file types including JSON, YAML, and even markdown.
+</p>
 <h2 id="spell-check">Spell Check</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">## Spellcheck</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">spellcheck-file</span>() {</span>
   npx spellchecker-cli <span class="hljs-comment">--files $@;</span>
 }
 </code></pre>
-<p>When you&#39;re writing as much markdown documentation as me, you&#39;ll want an easy way to spell check your files.</p>
+<p>
+  When you&#39;re writing as much markdown documentation as me, you&#39;ll want
+  an easy way to spell check your files.
+</p>
 <h2 id="what-the-commit">What the Commit</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">## What the Commit</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wtf</span><span class="hljs-params">()</span> </span>{ git commit -am <span class="hljs-string">"$(curl http://whatthecommit.com/index.txt)"</span>; }
 </code></pre>
-<p>This is a gimmick, but if you ever just want to commit file changes and you just don&#39;t know what to say in the commit message, <a href="http://whatthecommit.com/">what the commit</a> is just a fun resource to get whacky commit messages.</p>
+<p>
+  This is a gimmick, but if you ever just want to commit file changes and you
+  just don&#39;t know what to say in the commit message,
+  <a href="http://whatthecommit.com/">what the commit</a> is just a fun resource
+  to get whacky commit messages.
+</p>
 <h2 id="cheat-sheet">Cheat Sheet</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">## Cheat</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cheat</span><span class="hljs-params">()</span></span>{ curl https:<span class="hljs-comment">//cheat.sh/"$@"; }</span>
 </code></pre>
-<p>There are so many times I use a CLI tool and can&#39;t remember simple commands and options that it takes to perform certain tasks. Check out <a href="https://cheat.sh">cheat.sh</a> if you&#39;re looking for an easy way to reference different CLI tools.</p>
+<p>
+  There are so many times I use a CLI tool and can&#39;t remember simple
+  commands and options that it takes to perform certain tasks. Check out
+  <a href="https://cheat.sh">cheat.sh</a> if you&#39;re looking for an easy way
+  to reference different CLI tools.
+</p>
 <h2 id="document-generation">Document Generation</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">## Generate Markdown</span>
 <span class="hljs-keyword">function</span> generate-<span class="hljs-function"><span class="hljs-title">doc</span></span>() { 
@@ -106,8 +150,16 @@
   open <span class="hljs-string">"/tmp/<span class="hljs-variable">$1</span>.html"</span>;
 }
 </code></pre>
-<p>I use markdown to write documentation all the time, but if I need to send a coworker a document or present a slide with content that is written in markdown, I&#39;ll use <a href="https://pandoc.org">pandoc</a> to generate these intermediary file formats.</p>
-<p>It&#39;s really nice to leverage CSS when I want to make my documents look nice or need a clean way to look at markdown files.</p>
+<p>
+  I use markdown to write documentation all the time, but if I need to send a
+  coworker a document or present a slide with content that is written in
+  markdown, I&#39;ll use <a href="https://pandoc.org">pandoc</a> to generate
+  these intermediary file formats.
+</p>
+<p>
+  It&#39;s really nice to leverage CSS when I want to make my documents look
+  nice or need a clean way to look at markdown files.
+</p>
 <h2 id="file-encryption">File Encryption</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">## Encrypt : aes-256-cbc</span>
 <span class="hljs-keyword">function</span> encrypt-<span class="hljs-function"><span class="hljs-title">file</span></span>() {
@@ -131,15 +183,28 @@
   <span class="hljs-keyword">fi</span>
 }
 </code></pre>
-<p>It&#39;s nice to have a quick way to encrypt and decrypt files with sensitive information.</p>
+<p>
+  It&#39;s nice to have a quick way to encrypt and decrypt files with sensitive
+  information.
+</p>
 <h2 id="homebrew">Homebrew</h2>
 <pre><code class="lang-sh"><span class="hljs-comment">## Homebrew Install Script</span>
 function install-homebrew() { /<span class="hljs-attribute">bin/bash -c "$(curl -fsSL https</span>://raw<span class="hljs-variable">.githubusercontent</span><span class="hljs-variable">.com</span>/Homebrew/install/HEAD/install<span class="hljs-variable">.sh</span>)"; }
 </code></pre>
-<p>This is just in my configuration in the event that I just want to install <a href="https://brew.sh">homebrew</a> without copying and pasting the install script from the website.</p>
-<p>If I have a new Mac I need to setup, it&#39;ll make the setup so much easier.</p>
+<p>
+  This is just in my configuration in the event that I just want to install
+  <a href="https://brew.sh">homebrew</a> without copying and pasting the install
+  script from the website.
+</p>
+<p>
+  If I have a new Mac I need to setup, it&#39;ll make the setup so much easier.
+</p>
 <h2 id="version-managers">Version Managers</h2>
 <pre><code class="lang-sh"><span class="hljs-built_in">source</span> ~/.nvmrc;
 <span class="hljs-built_in">source</span> ~/.rvmrc;
 </code></pre>
-<p>I&#39;ve been using <code>nvm</code> and <code>rvm</code> to manage my node and ruby installations. They append rc scripts to load into your base rc file which I extract into their own designated files and load them in at the end.</p>
+<p>
+  I&#39;ve been using <code>nvm</code> and <code>rvm</code> to manage my node
+  and ruby installations. They append rc scripts to load into your base rc file
+  which I extract into their own designated files and load them in at the end.
+</p>

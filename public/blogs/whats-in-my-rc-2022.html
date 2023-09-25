@@ -1,7 +1,19 @@
-<p>Welcome to a tour of my <code>.zshrc</code> file! I thought it would be fun to take a dive into the different tools I use to elevate my developer game.</p>
-<p>If you want to see my whole config, I keep all my setup files on GitHub: <a href="https://github.com/unitehenry/config">https://github.com/unitehenry/config</a></p>
-<p>Also check out last years:
-<a href="https://dev.to/unitehenry/what-s-in-my-rc-2021-3llh">https://dev.to/unitehenry/what-s-in-my-rc-2021-3llh</a></p>
+<p>
+  Welcome to a tour of my <code>.zshrc</code> file! I thought it would be fun to
+  take a dive into the different tools I use to elevate my developer game.
+</p>
+<p>
+  If you want to see my whole config, I keep all my setup files on GitHub:
+  <a href="https://github.com/unitehenry/config"
+    >https://github.com/unitehenry/config</a
+  >
+</p>
+<p>
+  Also check out last years:
+  <a href="https://dev.to/unitehenry/what-s-in-my-rc-2021-3llh"
+    >https://dev.to/unitehenry/what-s-in-my-rc-2021-3llh</a
+  >
+</p>
 <h1 id="the-variables">The Variables</h1>
 <pre><code class="lang-sh"><span class="hljs-comment"># EDITOR</span>
 <span class="hljs-built_in">export</span> EDITOR=<span class="hljs-string">"vi"</span>;
@@ -17,9 +29,18 @@
 <span class="hljs-built_in">export</span> VAULT_ADDR=https://vault.stallions.dev/
 </code></pre>
 <ul>
-<li>Continuing to use vim, so just exporting my preferred editor variables</li>
-<li>Reference my iCloud directory which I use to keep all my personal files</li>
-<li>Adding an environment variable to help reference <a href="https://www.vaultproject.io/">where my company is storing secrets</a></li>
+  <li>
+    Continuing to use vim, so just exporting my preferred editor variables
+  </li>
+  <li>
+    Reference my iCloud directory which I use to keep all my personal files
+  </li>
+  <li>
+    Adding an environment variable to help reference
+    <a href="https://www.vaultproject.io/"
+      >where my company is storing secrets</a
+    >
+  </li>
 </ul>
 <h1 id="credentials">Credentials</h1>
 <pre><code class="lang-sh"><span class="hljs-comment"># Credentials Fetcher</span>
@@ -53,7 +74,12 @@
   op item <span class="hljs-keyword">delete</span> <span class="hljs-variable">$@</span>;
 }
 </code></pre>
-<p>I used to be anti hosted password managers, but I was recommended using 1password and their <a href="https://developer.1password.com/docs/cli">CLI client</a> to manage my passwords.</p>
+<p>
+  I used to be anti hosted password managers, but I was recommended using
+  1password and their
+  <a href="https://developer.1password.com/docs/cli">CLI client</a> to manage my
+  passwords.
+</p>
 <h1 id="code-formatter">Code Formatter</h1>
 <pre><code class="lang-sh"><span class="hljs-comment">## Code Formatter</span>
 <span class="hljs-keyword">function</span> format-<span class="hljs-function"><span class="hljs-title">file</span></span>() {
@@ -84,7 +110,10 @@
   <span class="hljs-built_in">unset</span> FILENAME; <span class="hljs-built_in">unset</span> EXTENSION;
 }
 </code></pre>
-<p>Using the same code formatter, but added something to handle <code>sql</code> files now!</p>
+<p>
+  Using the same code formatter, but added something to handle
+  <code>sql</code> files now!
+</p>
 <h1 id="spell-check">Spell Check</h1>
 <pre><code class="lang-sh"><span class="hljs-comment">## Spellcheck</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">spellcheck-file</span>() {</span>
@@ -102,7 +131,10 @@
 <span class="hljs-comment">## Cheat</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cheat</span><span class="hljs-params">()</span></span>{ curl https:<span class="hljs-comment">//cheat.sh/"$@"; }</span>
 </code></pre>
-<p>When I don&#39;t remember how to use a certain utility, this <a href="https://cheat.sh/">cheatsheet API</a> is always handy.</p>
+<p>
+  When I don&#39;t remember how to use a certain utility, this
+  <a href="https://cheat.sh/">cheatsheet API</a> is always handy.
+</p>
 <h1 id="git">Git</h1>
 <pre><code class="lang-sh"><span class="hljs-comment">## Commit Count</span>
 function commit-<span class="hljs-built_in">count</span>() {
@@ -146,12 +178,18 @@ Not <span class="hljs-keyword">as</span> useful, <span class="hljs-keyword">but<
   <span class="hljs-attribute">npx</span> <span class="hljs-variable">@mermaid</span>-js/mermaid-cli $@;
 }
 </code></pre>
-<p>Continuing to leverage <a href="https://pandoc.org/">pandoc</a> whenever I need to create some quick slides or a document.</p>
+<p>
+  Continuing to leverage <a href="https://pandoc.org/">pandoc</a> whenever I
+  need to create some quick slides or a document.
+</p>
 <h1 id="homebrew-install">Homebrew Install</h1>
 <pre><code class="lang-sh"><span class="hljs-comment">## Homebrew Install Script</span>
 function install-homebrew() { /<span class="hljs-attribute">bin/bash -c "$(curl -fsSL https</span>://raw<span class="hljs-variable">.githubusercontent</span><span class="hljs-variable">.com</span>/Homebrew/install/HEAD/install<span class="hljs-variable">.sh</span>)"; }
 </code></pre>
-<p>Handy script to install <a href="https://brew.sh">homebrew</a> on a new machine.</p>
+<p>
+  Handy script to install <a href="https://brew.sh">homebrew</a> on a new
+  machine.
+</p>
 <h1 id="vundle-install">Vundle Install</h1>
 <pre><code class="lang-sh"><span class="hljs-comment">## Vundle Install Script</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">install</span>-<span class="hljs-title">vundle</span><span class="hljs-params">()</span> </span>{
@@ -163,7 +201,12 @@ function install-homebrew() { /<span class="hljs-attribute">bin/bash -c "$(curl 
   fi
 }
 </code></pre>
-<p>I use <a href="https://github.com/VundleVim/Vundle.vim">vundle</a> to manage my vim packages. But this <a href="https://github.com/baopham/vundle-cli">handy cli</a> makes installing/removing those packages much easier.</p>
+<p>
+  I use <a href="https://github.com/VundleVim/Vundle.vim">vundle</a> to manage
+  my vim packages. But this
+  <a href="https://github.com/baopham/vundle-cli">handy cli</a> makes
+  installing/removing those packages much easier.
+</p>
 <h1 id="docker">Docker</h1>
 <pre><code class="lang-sh"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clear</span>-<span class="hljs-title">docker</span><span class="hljs-params">()</span></span> {
   docker system prune -a -f <span class="hljs-comment">--volumes</span>
@@ -173,7 +216,9 @@ function install-homebrew() { /<span class="hljs-attribute">bin/bash -c "$(curl 
   killall Docker &amp;&amp; open /Applications/Docker.app;
 }
 </code></pre>
-<p>For when I just want to wipe docker of all images, containers, and volumes.</p>
+<p>
+  For when I just want to wipe docker of all images, containers, and volumes.
+</p>
 <p>Also something to help restart the docker daemon.</p>
 <h1 id="google-cloud-platform">Google Cloud Platform</h1>
 <pre><code class="lang-sh"><span class="hljs-keyword">function</span> gcloud-<span class="hljs-function"><span class="hljs-title">adc</span></span>() {
@@ -206,10 +251,20 @@ function install-homebrew() { /<span class="hljs-attribute">bin/bash -c "$(curl 
 }
 </code></pre>
 <ul>
-<li>Logging into <a href="https://cloud.google.com/docs/authentication/provide-credentials-adc">Google ADC</a></li>
-<li>Setting GCP project to work with</li>
-<li><a href="https://cloud.google.com/iam/docs/impersonating-service-accounts">Service account impersonation</a></li>
-<li>Connect to <a href="https://cloud.google.com/sql">cloud sql</a></li>
+  <li>
+    Logging into
+    <a
+      href="https://cloud.google.com/docs/authentication/provide-credentials-adc"
+      >Google ADC</a
+    >
+  </li>
+  <li>Setting GCP project to work with</li>
+  <li>
+    <a href="https://cloud.google.com/iam/docs/impersonating-service-accounts"
+      >Service account impersonation</a
+    >
+  </li>
+  <li>Connect to <a href="https://cloud.google.com/sql">cloud sql</a></li>
 </ul>
 <h1 id="vault">Vault</h1>
 <pre><code class="lang-sh"><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">vs</span></span>() {
@@ -250,7 +305,11 @@ function install-homebrew() { /<span class="hljs-attribute">bin/bash -c "$(curl 
     <span class="hljs-keyword">fi</span>
 }
 </code></pre>
-<p>This script helps me switch <a href="https://www.vaultproject.io/">vault</a> contexts for pulling secrets in different environments like staging and production.</p>
+<p>
+  This script helps me switch
+  <a href="https://www.vaultproject.io/">vault</a> contexts for pulling secrets
+  in different environments like staging and production.
+</p>
 <h1 id="generate-id">Generate ID</h1>
 <pre><code class="lang-sh"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">uuid</span><span class="hljs-params">()</span> </span>{
     uuidgen | tr <span class="hljs-string">'[:upper:]'</span> <span class="hljs-string">'[:lower:]'</span>
@@ -260,4 +319,9 @@ function install-homebrew() { /<span class="hljs-attribute">bin/bash -c "$(curl 
   <span class="hljs-keyword">echo</span> <span class="hljs-string">"$(curl -sS https://randomvin.com/getvin.php\?type\=fake | tr -d '[:space:]')"</span>
 }
 </code></pre>
-<p>I use this to create new uuids and new <a href="https://en.wikipedia.org/wiki/Vehicle_identification_number">vin numbers</a>.</p>
+<p>
+  I use this to create new uuids and new
+  <a href="https://en.wikipedia.org/wiki/Vehicle_identification_number"
+    >vin numbers</a
+  >.
+</p>

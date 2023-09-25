@@ -337,7 +337,7 @@ export default function App() {
       date: new Date(`${blog.date}T00:00:00`),
       component: (key) => (
         <TimelineItem
-          timelineContent={`${content.blogSubtext} <a href="/blogs/${blog.id}">${blog.title}</a>`}
+          timelineContent={`${content.blogSubtext} <a href="/blog/${blog.id}">${blog.title}</a>`}
           date={blog.date}
           type="blog"
           key={key}

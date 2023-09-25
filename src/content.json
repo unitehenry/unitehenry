@@ -3,6 +3,8 @@
   "profileImage": "/profile.jpg",
   "lastUpdatedSubtext": "last updated this on September 24th 2023",
   "blogSubtext": "Posted a Blog:",
+  "blogReturnToText": "Return to Homepage",
+  "blogPostedOn": "Posted on ",
   "intro": "I am a highly motivated and experienced software engineer with a passion for building innovative and user-friendly products. I have over 5 years of experience in the tech industry, and I have worked on a variety of projects, including web applications, mobile apps, and enterprise software. I am skilled in a variety of programming languages and technologies, and I am always eager to learn new things.",
   "socials": [
     {

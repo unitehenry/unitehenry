@@ -26,12 +26,20 @@ export default function Blog() {
     <Box py={4}>
       <Box>
         <Link href="/">
-          Return to Homepage
+          { content.blogReturnToText }
         </Link>
         <Heading sx={{ fontSize: 6, mb: 2 }}>
           { blog.title }
         </Heading>
-        <Text />
+        <Text color={theme.colors.fg.muted}>
+          { content.blogPostedOn }
+          {' '}
+          {new Date(`${blog.date}T00:00:00`).toLocaleDateString(undefined, {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+          })}
+        </Text>
       </Box>
       <Box
         sx={{

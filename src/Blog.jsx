@@ -5,7 +5,7 @@ import {
 } from '@primer/react';
 import hljs from 'highlight.js';
 import content from './content.json';
-import 'highlight.js/styles/github.css';
+import 'highlight.js/styles/github-dark-dimmed.css';
 
 export default function Blog() {
   const { blogId } = useParams();
@@ -43,7 +43,7 @@ export default function Blog() {
           },
           code: {
             borderWidth: theme.borderWidths[1],
-            borderColor: theme.colors.border.default,
+            borderColor: theme.colors.border.muted,
             borderStyle: 'solid',
             borderRadius: theme.radii[2],
             maxWidth: '90vw',

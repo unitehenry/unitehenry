@@ -1,22 +1,75 @@
-<p>It&#39;s time for a new portfolio website! This time I decided to use Next.js to generate my static site with these principles in mind:</p>
+<p>
+  It&#39;s time for a new portfolio website! This time I decided to use Next.js
+  to generate my static site with these principles in mind:
+</p>
 <ol>
-<li>Take a <a href="https://github.com/unitehenry/unitehenry/blob/master/README.md">README</a> markdown file of my resume and convert it to a static homepage</li>
-<li>Use <a href="https://www.w3schools.com/html/html5_semantic_elements.asp">semantic HTML</a> with global styles for easy customization</li>
-<li>Adding <a href="https://nextjs.org/docs/basic-features/pages">next pages</a> will append links to the homepage</li>
+  <li>
+    Take a
+    <a href="https://github.com/unitehenry/unitehenry/blob/master/README.md"
+      >README</a
+    >
+    markdown file of my resume and convert it to a static homepage
+  </li>
+  <li>
+    Use
+    <a href="https://www.w3schools.com/html/html5_semantic_elements.asp"
+      >semantic HTML</a
+    >
+    with global styles for easy customization
+  </li>
+  <li>
+    Adding
+    <a href="https://nextjs.org/docs/basic-features/pages">next pages</a> will
+    append links to the homepage
+  </li>
 </ol>
 <h2 id="readme-conversion">README Conversion</h2>
-<p>The core concepts of this project are built on the foundation of these methods:</p>
+<p>
+  The core concepts of this project are built on the foundation of these
+  methods:
+</p>
 <ol>
-<li>Bootstrap a <a href="https://nextjs.org/docs/api-reference/create-next-app">create-next-app</a></li>
-<li>Use the <a href="https://nextjs.org/docs/basic-features/data-fetching">getStaticProps</a> to generate HTML from the README with <a href="https://github.com/showdownjs/showdown">showdown</a></li>
-<li>Use <a href="https://reactjs.org/docs/dom-elements.html">dangerouslySetInnerHTML</a> for SEO optimization</li>
+  <li>
+    Bootstrap a
+    <a href="https://nextjs.org/docs/api-reference/create-next-app"
+      >create-next-app</a
+    >
+  </li>
+  <li>
+    Use the
+    <a href="https://nextjs.org/docs/basic-features/data-fetching"
+      >getStaticProps</a
+    >
+    to generate HTML from the README with
+    <a href="https://github.com/showdownjs/showdown">showdown</a>
+  </li>
+  <li>
+    Use
+    <a href="https://reactjs.org/docs/dom-elements.html"
+      >dangerouslySetInnerHTML</a
+    >
+    for SEO optimization
+  </li>
 </ol>
 <h3 id="getting-started-with-next">Getting Started with Next</h3>
-<p>We can start bootstrapping our application using the <a href="https://nextjs.org/docs/api-reference/create-next-app">create-next-app</a> npm script.</p>
+<p>
+  We can start bootstrapping our application using the
+  <a href="https://nextjs.org/docs/api-reference/create-next-app"
+    >create-next-app</a
+  >
+  npm script.
+</p>
 <pre><code class="lang-sh"><span class="hljs-variable">$ </span>npx create-<span class="hljs-keyword">next</span>-app
 </code></pre>
 <h3 id="generating-html-from-readme">Generating HTML from README</h3>
-<p>Using <a href="https://nextjs.org/docs/basic-features/data-fetching">getStaticProps</a> and <a href="https://github.com/showdownjs/showdown">showdown</a>, we can generate some HTML to use for our site generation.</p>
+<p>
+  Using
+  <a href="https://nextjs.org/docs/basic-features/data-fetching"
+    >getStaticProps</a
+  >
+  and <a href="https://github.com/showdownjs/showdown">showdown</a>, we can
+  generate some HTML to use for our site generation.
+</p>
 <pre><code class="lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStaticProps</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
   <span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
@@ -41,7 +94,14 @@
 }
 </code></pre>
 <h3 id="serving-html-optimized-for-seo">Serving HTML optimized for SEO</h3>
-<p>The key to using <a href="https://reactjs.org/docs/dom-elements.html">dangerouslySetInnerHTML</a> with next.js is that we want to ensure the content of our HTML is served as static content for SEO.</p>
+<p>
+  The key to using
+  <a href="https://reactjs.org/docs/dom-elements.html"
+    >dangerouslySetInnerHTML</a
+  >
+  with next.js is that we want to ensure the content of our HTML is served as
+  static content for SEO.
+</p>
 <pre><code class="lang-js"><span class="xml">return (
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">Head</span>&gt;</span>
@@ -58,9 +118,23 @@
   );</span>
 </code></pre>
 <h2 id="semantic-styling">Semantic Styling</h2>
-<p>After your content is being injected in the page, you should be staring at a wall of black and white text like this:</p>
-<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/myqsbjqifmu77jreojyw.png" alt="&quot;Unstyled README Homepage&quot;"></p>
-<p>Using the <a href="https://nextjs.org/docs/basic-features/built-in-css-support">global.css</a> file provided by next, we can globally style semantic elements like this:</p>
+<p>
+  After your content is being injected in the page, you should be staring at a
+  wall of black and white text like this:
+</p>
+<p>
+  <img
+    src="/images/b568ca02-3d59-4bf6-8633-8f88d1823de5.png"
+    alt='"Unstyled README Homepage"'
+  />
+</p>
+<p>
+  Using the
+  <a href="https://nextjs.org/docs/basic-features/built-in-css-support"
+    >global.css</a
+  >
+  file provided by next, we can globally style semantic elements like this:
+</p>
 <pre><code class="lang-css"><span class="hljs-selector-tag">body</span> {
      <span class="hljs-comment">/* CSS Styles */</span>
 }
@@ -98,8 +172,19 @@ main <span class="hljs-selector-tag">a</span> {
 }
 </code></pre>
 <h2 id="page-extensibility">Page Extensibility</h2>
-<p>One of the design concepts I wanted to implement was the idea that you could add a next page in the pages directory and a navigation link be appended to the homepage.</p>
-<p>Taking advantage of the the <a href="https://nextjs.org/docs/basic-features/data-fetching">getStaticProps</a> function, we can use node to read the directory, exclude unrelated files, and generate links in our homepage.</p>
+<p>
+  One of the design concepts I wanted to implement was the idea that you could
+  add a next page in the pages directory and a navigation link be appended to
+  the homepage.
+</p>
+<p>
+  Taking advantage of the the
+  <a href="https://nextjs.org/docs/basic-features/data-fetching"
+    >getStaticProps</a
+  >
+  function, we can use node to read the directory, exclude unrelated files, and
+  generate links in our homepage.
+</p>
 <pre><code class="lang-js"><span class="hljs-regexp">//</span> CONFIG[<span class="hljs-string">'pageExcludes'</span>] = [ <span class="hljs-string">'app'</span>, <span class="hljs-string">'api'</span>, <span class="hljs-string">'index'</span>]
 
   function getPages() {
@@ -128,8 +213,20 @@ main <span class="hljs-selector-tag">a</span> {
       <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
 </code></pre>
 <h3 id="gathering-my-blog-post-data">Gathering my Blog Post Data</h3>
-<p>With this feature, I can now create unique CMS pages to extend my static site. Let&#39;s create a blog page to fetch my DEV posts.</p>
-<p>I&#39;ll be using the <a href="https://github.com/axios/axios">axios</a> library to make a request to the DEV api, gather my posts data, and send those props to the page for static site generation. Again, taking advantage of the <a href="https://nextjs.org/docs/basic-features/data-fetching">getStaticProps</a> hook.</p>
+<p>
+  With this feature, I can now create unique CMS pages to extend my static site.
+  Let&#39;s create a blog page to fetch my DEV posts.
+</p>
+<p>
+  I&#39;ll be using the
+  <a href="https://github.com/axios/axios">axios</a> library to make a request
+  to the DEV api, gather my posts data, and send those props to the page for
+  static site generation. Again, taking advantage of the
+  <a href="https://nextjs.org/docs/basic-features/data-fetching"
+    >getStaticProps</a
+  >
+  hook.
+</p>
 <pre><code class="lang-js"><span class="hljs-comment">// pages/blog.js</span>
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStaticProps</span>(<span class="hljs-params"></span>) </span>{
@@ -192,9 +289,34 @@ main <span class="hljs-selector-tag">a</span> {
 
         <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
 </code></pre>
-<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/z8av7rwd5fp1ynhetgd1.png" alt="&quot;Portfolio Footer Pages&quot;"></p>
+<p>
+  <img
+    src="/images/7f6ed5e9-a9b8-45bb-b91a-43686d661b42.png"
+    alt='"Portfolio Footer Pages"'
+  />
+</p>
 <h2 id="bootstrapping-of-my-repository">Bootstrapping of my Repository</h2>
-<p>If you want to see the source code or fork this repo and generate your own static site, I&#39;ve created a <a href="https://github.com/unitehenry/unitehenry">GitHub repository</a> and <a href="https://github.com/unitehenry/unitehenry/wiki">documented in detail</a> how to customize the code for your own static portfolio site.</p>
+<p>
+  If you want to see the source code or fork this repo and generate your own
+  static site, I&#39;ve created a
+  <a href="https://github.com/unitehenry/unitehenry">GitHub repository</a> and
+  <a href="https://github.com/unitehenry/unitehenry/wiki"
+    >documented in detail</a
+  >
+  how to customize the code for your own static portfolio site.
+</p>
 <h3 id="github-trick">GitHub Trick</h3>
-<p>As a side note, there is a <a href="https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme">GitHub trick</a> that will take your README and display it on your GitHub profile as well.</p>
-<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/vi7gzkp35l5lt737wu9g.png" alt="&quot;GitHub Profile&quot;"></p>
+<p>
+  As a side note, there is a
+  <a
+    href="https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme"
+    >GitHub trick</a
+  >
+  that will take your README and display it on your GitHub profile as well.
+</p>
+<p>
+  <img
+    src="/images/3f889b6e-e224-44d1-b895-f3cf2462800c.png"
+    alt='"GitHub Profile"'
+  />
+</p>

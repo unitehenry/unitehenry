@@ -339,7 +339,7 @@ export default function App() {
         <TimelineItem
           timelineContent={`${content.blogSubtext} <a href="/blogs/${blog.id}">${blog.title}</a>`}
           date={blog.date}
-          type={'blog'}
+          type="blog"
           key={key}
         />
       ),

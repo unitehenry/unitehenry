@@ -6,14 +6,13 @@ import {
   Tooltip,
   Avatar,
   PointerBox,
-  ThemeProvider,
-  BaseStyles,
   Box,
   Timeline,
   Octicon,
   Link,
 } from '@primer/react';
 import {
+  PencilIcon,
   PeopleIcon,
   LinkIcon,
   MarkGithubIcon,
@@ -25,24 +24,6 @@ import {
   FlameIcon,
 } from '@primer/octicons-react';
 import content from './content.json';
-
-function Background({ children }) {
-  const { theme } = useTheme();
-  return (
-    <Box
-      backgroundColor={theme.colors.canvas.default}
-      px={4}
-      minHeight="100vh"
-      width="100%"
-      display="flex"
-      justifyContent="center"
-    >
-      <Box width={[theme.sizes.small, theme.sizes.medium, theme.sizes.large]}>
-        { children }
-      </Box>
-    </Box>
-  );
-}
 
 function TimelineItem({ timelineContent, type, date }) {
   const { theme } = useTheme();
@@ -56,6 +37,9 @@ function TimelineItem({ timelineContent, type, date }) {
       }
       case 'education': {
         return MortarBoardIcon;
+      }
+      case 'blog': {
+        return PencilIcon;
       }
       default: {
         return FlameIcon;
@@ -348,6 +332,18 @@ export default function App() {
         />
       ),
     })),
+    ...content.blogs.map((blog) => ({
+      key: blog.id,
+      date: new Date(`${blog.date}T00:00:00`),
+      component: (key) => (
+        <TimelineItem
+          timelineContent={`${content.blogSubtext} <a href="/blogs/${blog.id}">${blog.title}</a>`}
+          date={blog.date}
+          type={'blog'}
+          key={key}
+        />
+      ),
+    })),
     ...content.milestones.map((milestone) => ({
       key: milestone.name + milestone.date,
       date: new Date(`${milestone.date}T00:00:00`),
@@ -367,28 +363,22 @@ export default function App() {
   ];
 
   return (
-    <ThemeProvider colorMode="auto" nightScheme="dark_dimmed">
-      <BaseStyles>
-        <Background>
-          <Box display="flex" flexDirection={['column', 'row', 'row']} mt={4}>
-            <Box mr={3}>
-              <Link href="/">
-                <Avatar src={content.profileImage} size={72} />
-              </Link>
-            </Box>
-            <TimelineBox>
-              <DialogHeader />
-              <Timeline>
-                {
-                  timelineItems
-                    .sort((a, b) => (a.date < b.date ? 1 : -1))
-                    .map((item) => item.component(item.key))
-                }
-              </Timeline>
-            </TimelineBox>
-          </Box>
-        </Background>
-      </BaseStyles>
-    </ThemeProvider>
+    <Box display="flex" flexDirection={['column', 'row', 'row']} mt={4}>
+      <Box mr={3}>
+        <Link href="/">
+          <Avatar src={content.profileImage} size={72} />
+        </Link>
+      </Box>
+      <TimelineBox>
+        <DialogHeader />
+        <Timeline>
+          {
+            timelineItems
+              .sort((a, b) => (a.date < b.date ? 1 : -1))
+              .map((item) => item.component(item.key))
+          }
+        </Timeline>
+      </TimelineBox>
+    </Box>
   );
 }

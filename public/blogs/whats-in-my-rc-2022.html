@@ -1,0 +1,263 @@
+<p>Welcome to a tour of my <code>.zshrc</code> file! I thought it would be fun to take a dive into the different tools I use to elevate my developer game.</p>
+<p>If you want to see my whole config, I keep all my setup files on GitHub: <a href="https://github.com/unitehenry/config">https://github.com/unitehenry/config</a></p>
+<p>Also check out last years:
+<a href="https://dev.to/unitehenry/what-s-in-my-rc-2021-3llh">https://dev.to/unitehenry/what-s-in-my-rc-2021-3llh</a></p>
+<h1 id="the-variables">The Variables</h1>
+<pre><code class="lang-sh"><span class="hljs-comment"># EDITOR</span>
+<span class="hljs-built_in">export</span> EDITOR=<span class="hljs-string">"vi"</span>;
+<span class="hljs-built_in">export</span> VISUAL=<span class="hljs-string">"vi"</span>;
+
+<span class="hljs-comment"># iCloud Directory</span>
+<span class="hljs-built_in">export</span> DOCS=<span class="hljs-string">"/Users/<span class="hljs-variable">$(whoami)</span>/Library/Mobile Documents/com~apple~CloudDocs"</span>;
+
+<span class="hljs-comment"># Work Directory</span>
+<span class="hljs-built_in">export</span> WORK=<span class="hljs-string">"/Users/<span class="hljs-variable">$(whoami)</span>/Projects/lula"</span>;
+
+<span class="hljs-comment"># Vault Address</span>
+<span class="hljs-built_in">export</span> VAULT_ADDR=https://vault.stallions.dev/
+</code></pre>
+<ul>
+<li>Continuing to use vim, so just exporting my preferred editor variables</li>
+<li>Reference my iCloud directory which I use to keep all my personal files</li>
+<li>Adding an environment variable to help reference <a href="https://www.vaultproject.io/">where my company is storing secrets</a></li>
+</ul>
+<h1 id="credentials">Credentials</h1>
+<pre><code class="lang-sh"><span class="hljs-comment"># Credentials Fetcher</span>
+<span class="hljs-keyword">function</span> op-create() {
+  op item template get Login &gt; <span class="hljs-regexp">/tmp/</span>login.json;
+  <span class="hljs-keyword">if</span> [ -n <span class="hljs-string">"$3"</span> ]
+  then
+    echo $(cat <span class="hljs-regexp">/tmp/</span>login.json | jq -r -c <span class="hljs-string">"(.fields[] | select(.id | contains(\"username\"))) .value = \"$2\""</span>) &gt; <span class="hljs-regexp">/tmp/</span>login.json;
+    echo $(cat <span class="hljs-regexp">/tmp/</span>login.json | jq -r -c <span class="hljs-string">"(.fields[] | select(.id | contains(\"password\"))) .value = \"$3\""</span>) &gt; <span class="hljs-regexp">/tmp/</span>login.json;
+    op item create --template <span class="hljs-regexp">/tmp/</span>login.json --title <span class="hljs-variable">$1</span>;
+  <span class="hljs-keyword">else</span>
+    echo $(cat <span class="hljs-regexp">/tmp/</span>login.json | jq -r -c <span class="hljs-string">"(.fields[] | select(.id | contains(\"username\"))) .value = \"$2\""</span>) &gt; <span class="hljs-regexp">/tmp/</span>login.json;
+    op item create --template <span class="hljs-regexp">/tmp/</span>login.json --title <span class="hljs-variable">$1</span> --generate-password;
+  fi
+  rm <span class="hljs-regexp">/tmp/</span>login.json;
+}
+
+<span class="hljs-keyword">function</span> op-list() {
+  op item list --format=json | jq -c -r <span class="hljs-string">'.[].title'</span>;
+}
+
+<span class="hljs-keyword">function</span> op-username() {
+ op item get <span class="hljs-variable">$@</span> --format=json | jq -c -r <span class="hljs-string">'.fields[] | select(.id | contains("username")) | .value'</span>;
+}
+
+<span class="hljs-keyword">function</span> op-password() {
+  op item get <span class="hljs-variable">$@</span> --format=json | jq -c -r <span class="hljs-string">'.fields[] | select(.id | contains("password")) | .value'</span>;
+}
+
+<span class="hljs-keyword">function</span> op-<span class="hljs-keyword">delete</span>() {
+  op item <span class="hljs-keyword">delete</span> <span class="hljs-variable">$@</span>;
+}
+</code></pre>
+<p>I used to be anti hosted password managers, but I was recommended using 1password and their <a href="https://developer.1password.com/docs/cli">CLI client</a> to manage my passwords.</p>
+<h1 id="code-formatter">Code Formatter</h1>
+<pre><code class="lang-sh"><span class="hljs-comment">## Code Formatter</span>
+<span class="hljs-keyword">function</span> format-<span class="hljs-function"><span class="hljs-title">file</span></span>() {
+  <span class="hljs-built_in">export</span> FILENAME=<span class="hljs-string">"<span class="hljs-variable">$(basename $@)</span>"</span>;
+  <span class="hljs-built_in">export</span> EXTENSION=<span class="hljs-string">"<span class="hljs-variable">${FILENAME##*.}</span>"</span>;
+
+  <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$EXTENSION</span> = <span class="hljs-string">'py'</span> ]
+  <span class="hljs-keyword">then</span>
+    yapf --in-place <span class="hljs-variable">$@</span>;
+    <span class="hljs-built_in">return</span> 0;
+  <span class="hljs-keyword">fi</span>
+
+  <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$EXTENSION</span> = <span class="hljs-string">'php'</span> ]
+  <span class="hljs-keyword">then</span>
+    php-cs-fixer fix <span class="hljs-variable">$@</span>;
+    rm .php_cs.cache;
+    <span class="hljs-built_in">return</span> 0;
+  <span class="hljs-keyword">fi</span>
+
+  <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$EXTENSION</span> = <span class="hljs-string">'sql'</span> ]
+  <span class="hljs-keyword">then</span>
+    npx sql-formatter-cli --file <span class="hljs-variable">$@</span> --out <span class="hljs-variable">$@</span>;
+    <span class="hljs-built_in">return</span> 0;
+  <span class="hljs-keyword">fi</span>
+
+  npx prettier --write --single-quote <span class="hljs-variable">$@</span>;
+
+  <span class="hljs-built_in">unset</span> FILENAME; <span class="hljs-built_in">unset</span> EXTENSION;
+}
+</code></pre>
+<p>Using the same code formatter, but added something to handle <code>sql</code> files now!</p>
+<h1 id="spell-check">Spell Check</h1>
+<pre><code class="lang-sh"><span class="hljs-comment">## Spellcheck</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">spellcheck-file</span>() {</span>
+  npx spellchecker-cli <span class="hljs-comment">--files $@;</span>
+}
+</code></pre>
+<p>Handy spellchecker utility through <code>npx</code> is always useful.</p>
+<h1 id="what-the-commit">What the Commit</h1>
+<pre><code class="lang-sh"><span class="hljs-comment">## What the Commit</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wtf</span><span class="hljs-params">()</span> </span>{ git commit -am <span class="hljs-string">"$(curl http://whatthecommit.com/index.txt)"</span>; }
+</code></pre>
+<p>For when I don&#39;t know what to type in for a commit message.</p>
+<h1 id="cheat-sheet">Cheat Sheet</h1>
+<pre><code class="lang-sh">Cheat Sheet
+<span class="hljs-comment">## Cheat</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cheat</span><span class="hljs-params">()</span></span>{ curl https:<span class="hljs-comment">//cheat.sh/"$@"; }</span>
+</code></pre>
+<p>When I don&#39;t remember how to use a certain utility, this <a href="https://cheat.sh/">cheatsheet API</a> is always handy.</p>
+<h1 id="git">Git</h1>
+<pre><code class="lang-sh"><span class="hljs-comment">## Commit Count</span>
+function commit-<span class="hljs-built_in">count</span>() {
+  <span class="hljs-keyword">if</span> [ -n <span class="hljs-string">"$1"</span> ]
+  <span class="hljs-keyword">then</span>
+    git rev-<span class="hljs-built_in">list</span> <span class="hljs-comment">--count $1;</span>
+  <span class="hljs-keyword">else</span>
+    echo <span class="hljs-string">"commit-count &lt;branch-name&gt;"</span>;
+  fi
+}
+
+Not <span class="hljs-keyword">as</span> useful, <span class="hljs-keyword">but</span> interesting. I use this <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> <span class="hljs-keyword">the</span> <span class="hljs-built_in">number</span> <span class="hljs-keyword">of</span> commits <span class="hljs-keyword">on</span> <span class="hljs-keyword">my</span> current working branch.
+</code></pre>
+<h1 id="document-generation">Document Generation</h1>
+<pre><code class="lang-sh"><span class="hljs-comment">## Generate Markdown</span>
+<span class="hljs-attribute">function</span> generate-doc() { 
+  <span class="hljs-attribute">cp</span> -rf . /tmp;
+  <span class="hljs-attribute">if</span> [ -n <span class="hljs-string">"<span class="hljs-variable">$2</span>"</span> ]
+  then
+    pandoc -s <span class="hljs-variable">$1</span> -c <span class="hljs-variable">$2</span> -o <span class="hljs-string">"/tmp/<span class="hljs-variable">$1</span>.html"</span>;
+  <span class="hljs-attribute">else</span>
+    pandoc -s <span class="hljs-variable">$1</span> -o <span class="hljs-string">"/tmp/<span class="hljs-variable">$1</span>.html"</span>; 
+  <span class="hljs-attribute">fi</span>
+  open <span class="hljs-string">"/tmp/<span class="hljs-variable">$1</span>.html"</span>;
+}
+
+<span class="hljs-comment">## Generate Slide</span>
+<span class="hljs-attribute">function</span> generate-slide() {
+  <span class="hljs-comment"># https://revealjs.com/config/</span>
+  <span class="hljs-attribute">pandoc</span> -t revealjs \
+    -V controls=<span class="hljs-string">"false"</span> \
+    -V progress=<span class="hljs-string">"false"</span> \
+    -V navigationMode=<span class="hljs-string">"linear"</span> \
+    -V transition=<span class="hljs-string">"none"</span> \
+    -s <span class="hljs-variable">$1</span> -o <span class="hljs-string">"/tmp/<span class="hljs-variable">$1</span>.html"</span>;
+  <span class="hljs-attribute">cp</span> -rf . /tmp;
+  <span class="hljs-attribute">open</span> <span class="hljs-string">"/tmp/<span class="hljs-variable">$1</span>.html"</span>;
+}
+
+<span class="hljs-attribute">function</span> mmdc() {
+  <span class="hljs-attribute">npx</span> <span class="hljs-variable">@mermaid</span>-js/mermaid-cli $@;
+}
+</code></pre>
+<p>Continuing to leverage <a href="https://pandoc.org/">pandoc</a> whenever I need to create some quick slides or a document.</p>
+<h1 id="homebrew-install">Homebrew Install</h1>
+<pre><code class="lang-sh"><span class="hljs-comment">## Homebrew Install Script</span>
+function install-homebrew() { /<span class="hljs-attribute">bin/bash -c "$(curl -fsSL https</span>://raw<span class="hljs-variable">.githubusercontent</span><span class="hljs-variable">.com</span>/Homebrew/install/HEAD/install<span class="hljs-variable">.sh</span>)"; }
+</code></pre>
+<p>Handy script to install <a href="https://brew.sh">homebrew</a> on a new machine.</p>
+<h1 id="vundle-install">Vundle Install</h1>
+<pre><code class="lang-sh"><span class="hljs-comment">## Vundle Install Script</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">install</span>-<span class="hljs-title">vundle</span><span class="hljs-params">()</span> </span>{
+  git <span class="hljs-keyword">clone</span> https:<span class="hljs-comment">//github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim;</span>
+  sudo gem install vundle-cli;
+  <span class="hljs-keyword">if</span> ! grep -Fxq <span class="hljs-string">'set rtp+=~/.vim/bundle/Vundle.vim'</span> ~/.vimrc
+  then
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"\nset nocompatible\nfiletype off\nset rtp+=~/.vim/bundle/Vundle.vim\ncall vundle#begin()\n\nPlugin 'VundleVim/Vundle.vim'\n\ncall vundle#end()\nfiletype plugin indent on"</span> &gt;&gt; ~/.vimrc;
+  fi
+}
+</code></pre>
+<p>I use <a href="https://github.com/VundleVim/Vundle.vim">vundle</a> to manage my vim packages. But this <a href="https://github.com/baopham/vundle-cli">handy cli</a> makes installing/removing those packages much easier.</p>
+<h1 id="docker">Docker</h1>
+<pre><code class="lang-sh"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clear</span>-<span class="hljs-title">docker</span><span class="hljs-params">()</span></span> {
+  docker system prune -a -f <span class="hljs-comment">--volumes</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">kill</span>-<span class="hljs-title">docker</span><span class="hljs-params">()</span></span> {
+  killall Docker &amp;&amp; open /Applications/Docker.app;
+}
+</code></pre>
+<p>For when I just want to wipe docker of all images, containers, and volumes.</p>
+<p>Also something to help restart the docker daemon.</p>
+<h1 id="google-cloud-platform">Google Cloud Platform</h1>
+<pre><code class="lang-sh"><span class="hljs-keyword">function</span> gcloud-<span class="hljs-function"><span class="hljs-title">adc</span></span>() {
+  gcloud auth login --update-adc
+}
+
+<span class="hljs-keyword">function</span> use-gcloud-<span class="hljs-function"><span class="hljs-title">project</span></span> () {
+  gcloud config <span class="hljs-built_in">set</span> project <span class="hljs-string">"<span class="hljs-variable">$1</span>"</span>;
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">impersonate</span></span>() {
+    <span class="hljs-keyword">if</span> [ -z <span class="hljs-string">"<span class="hljs-variable">$1</span>"</span> ]; <span class="hljs-keyword">then</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">"Must provide a service account to impersonate."</span>
+        <span class="hljs-built_in">return</span> 1
+    <span class="hljs-keyword">fi</span>
+    gcloud config <span class="hljs-built_in">set</span> auth/impersonate_service_account <span class="hljs-string">"<span class="hljs-variable">$1</span>"</span>
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">unimpersonate</span></span>() {
+    gcloud config <span class="hljs-built_in">unset</span> auth/impersonate_service_account
+}
+
+<span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">connect</span></span>() {
+    <span class="hljs-comment"># Set the context</span>
+    CONTEXT=<span class="hljs-variable">${1}</span>
+
+    <span class="hljs-built_in">export</span> PGUSER=$(vault kv get -field=username secrets/<span class="hljs-variable">${CONTEXT}</span>/postgres-terraform)
+    <span class="hljs-built_in">export</span> PGPASSWORD=$(vault kv get -field=password <span class="hljs-string">"secrets/<span class="hljs-variable">${CONTEXT}</span>/postgres-terraform"</span>)
+    psql -h 127.0.0.1 -p 54320  <span class="hljs-_">-d</span> <span class="hljs-string">"<span class="hljs-variable">${CONTEXT}</span>"</span>
+}
+</code></pre>
+<ul>
+<li>Logging into <a href="https://cloud.google.com/docs/authentication/provide-credentials-adc">Google ADC</a></li>
+<li>Setting GCP project to work with</li>
+<li><a href="https://cloud.google.com/iam/docs/impersonating-service-accounts">Service account impersonation</a></li>
+<li>Connect to <a href="https://cloud.google.com/sql">cloud sql</a></li>
+</ul>
+<h1 id="vault">Vault</h1>
+<pre><code class="lang-sh"><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">vs</span></span>() {
+    <span class="hljs-comment"># Verify inputs</span>
+    environment=<span class="hljs-string">"<span class="hljs-variable">$1</span>"</span>
+    <span class="hljs-keyword">if</span> [ <span class="hljs-string">"<span class="hljs-variable">$environment</span>"</span> != <span class="hljs-string">"common"</span> ] &amp;&amp; [ <span class="hljs-string">"<span class="hljs-variable">$environment</span>"</span> != <span class="hljs-string">"staging"</span> ] &amp;&amp; [ <span class="hljs-string">"<span class="hljs-variable">$environment</span>"</span> != <span class="hljs-string">"production"</span> ]; <span class="hljs-keyword">then</span>
+        <span class="hljs-built_in">echo</span> <span class="hljs-string">"\"<span class="hljs-variable">$environment</span>\" is not a valid environment."</span>
+        <span class="hljs-built_in">return</span> 1
+    <span class="hljs-keyword">fi</span>
+
+    <span class="hljs-comment"># Setup</span>
+    [ ! <span class="hljs-_">-d</span> ~/.vault-tokens ] &amp;&amp; mkdir ~/.vault-tokens
+
+    <span class="hljs-comment"># Move the current environment's token to the correct location</span>
+    <span class="hljs-keyword">if</span> [ <span class="hljs-_">-f</span> ~/.vault-tokens/current-environment ] &amp;&amp; [ <span class="hljs-_">-f</span> ~/.vault-token ]; <span class="hljs-keyword">then</span>
+        current=<span class="hljs-string">"<span class="hljs-variable">$(cat ~/.vault-tokens/current-environment)</span>"</span>
+        cp ~/.vault-token ~/.vault-tokens/<span class="hljs-variable">${current}</span>
+    <span class="hljs-keyword">fi</span>
+
+    <span class="hljs-comment"># Set the new current environment</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">${environment}</span>"</span> &gt; ~/.vault-tokens/current-environment
+
+    <span class="hljs-comment"># Set the correct vault address</span>
+    <span class="hljs-keyword">if</span> [ <span class="hljs-string">"<span class="hljs-variable">$environment</span>"</span> = <span class="hljs-string">"common"</span> ]; <span class="hljs-keyword">then</span>
+        <span class="hljs-built_in">export</span> VAULT_ADDR=<span class="hljs-string">"https://vault.stallions.dev"</span>
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-built_in">export</span> VAULT_ADDR=<span class="hljs-string">"https://vault.<span class="hljs-variable">${environment}</span>.stallions.dev"</span>
+    <span class="hljs-keyword">fi</span>
+
+    <span class="hljs-comment"># Get the token from the current environment if it exist</span>
+    <span class="hljs-keyword">if</span> [ <span class="hljs-_">-f</span> ~/.vault-tokens/<span class="hljs-variable">${environment}</span> ] ; <span class="hljs-keyword">then</span>
+        cp ~/.vault-tokens/<span class="hljs-variable">${environment}</span> ~/.vault-token
+    <span class="hljs-keyword">fi</span>
+
+    <span class="hljs-comment"># Prompt login if the token is not valid</span>
+    <span class="hljs-keyword">if</span> ! vault token lookup &gt; /dev/null; <span class="hljs-keyword">then</span>
+        vault login --method oidc
+    <span class="hljs-keyword">fi</span>
+}
+</code></pre>
+<p>This script helps me switch <a href="https://www.vaultproject.io/">vault</a> contexts for pulling secrets in different environments like staging and production.</p>
+<h1 id="generate-id">Generate ID</h1>
+<pre><code class="lang-sh"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">uuid</span><span class="hljs-params">()</span> </span>{
+    uuidgen | tr <span class="hljs-string">'[:upper:]'</span> <span class="hljs-string">'[:lower:]'</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vin</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">echo</span> <span class="hljs-string">"$(curl -sS https://randomvin.com/getvin.php\?type\=fake | tr -d '[:space:]')"</span>
+}
+</code></pre>
+<p>I use this to create new uuids and new <a href="https://en.wikipedia.org/wiki/Vehicle_identification_number">vin numbers</a>.</p>

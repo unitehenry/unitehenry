@@ -10,14 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vite": "^4.4.5",
-    "@vitejs/plugin-react": "^4.0.3",
     "@primer/octicons-react": "^19.8.0",
     "@primer/primitives": "^7.14.0",
     "@primer/react": "^35.30.0",
+    "@vitejs/plugin-react": "^4.0.3",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.0.8"
+    "react-router-dom": "^6.16.0",
+    "sort-by": "^1.2.0",
+    "styled-components": "^6.0.8",
+    "vite": "^4.4.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

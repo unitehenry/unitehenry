@@ -1,4 +1,4 @@
-.PHONY: main serve
+.PHONY: main serve clean
 
 main:
 	hugo

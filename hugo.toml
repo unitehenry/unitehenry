@@ -1,0 +1,17 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Henry Unite'
+theme = 'hugo-bearblog'
+
+[menus]
+main = [
+  { url = "/certifications", name = "Awards & Certifications" },
+  { url = "mailto:unitehenry@gmail.com", name = "Email" },
+  { url = "https://linkedin.com/in/unitehenry", name = "LinkedIn" },
+  { url = "https://github.com/unitehenry", name = "GitHub" }
+]
+
+[params]
+description = "Henry is a Software Engineer in San Francisco"
+favicon = "favicon.ico"
+hideMadeWithLine = true

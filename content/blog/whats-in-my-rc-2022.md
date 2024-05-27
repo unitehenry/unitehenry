@@ -7,7 +7,7 @@ Welcome to a tour of my `.zshrc` file! I thought it would be fun to take a dive 
 
 If you want to see my whole config, I keep all my setup files on GitHub: [https://github.com/unitehenry/config](https://github.com/unitehenry/config)
 
-Also check out last years: [https://dev.to/unitehenry/what-s-in-my-rc-2021-3llh](https://dev.to/unitehenry/what-s-in-my-rc-2021-3llh)
+Also check out last years: [What's in my RC 2021](/blog/whats-in-my-rc-2021)
 
 # The Variables
 

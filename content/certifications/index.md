@@ -2,9 +2,9 @@
 title = 'Awards & Certifications'
 +++
 
-[Build a Modern Computer from First Principles: Nand to Tetris Part II](https://www.coursera.org/account/accomplishments/certificate/EG4ZXUGG4DHY) -- *May 2024*
+[Build a Modern Computer from First Principles: Nand to Tetris Part II](https://www.coursera.org/account/accomplishments/certificate/EG4ZXUGG4DHY) -- May 2024
 
-[Build a Modern Computer from First Principles: Nand to Tetris](https://www.coursera.org/account/accomplishments/certificate/EG4ZXUGG4DHY) -- *February 2024*
+[Build a Modern Computer from First Principles: Nand to Tetris](https://www.coursera.org/account/accomplishments/certificate/EG4ZXUGG4DHY) -- February 2024
 
 [Design Patterns](https://www.coursera.org/account/accomplishments/certificate/ZWER6282CWPD) -- August 2023
 

@@ -22,15 +22,15 @@ The core concepts of this project are built on the foundation of these methods:
 
 We can start bootstrapping our application using the [create-next-app](https://nextjs.org/docs/api-reference/create-next-app) npm script.
 
-```
+{{< highlight bash >}}
 $ npx create-next-app
-```
+{{< / highlight >}}
 
 ### Generating HTML from README
 
 Using [getStaticProps](https://nextjs.org/docs/basic-features/data-fetching) and [showdown](https://github.com/showdownjs/showdown), we can generate some HTML to use for our site generation.
 
-```
+{{< highlight js >}}
 export async function getStaticProps() {
   const path = require('path');
   const fs = require('fs');
@@ -53,13 +53,13 @@ export async function getStaticProps() {
     props: { html },
   };
 }
-```
+{{< / highlight >}}
 
 ### Serving HTML optimized for SEO
 
 The key to using [dangerouslySetInnerHTML](https://reactjs.org/docs/dom-elements.html) with next.js is that we want to ensure the content of our HTML is served as static content for SEO.
 
-```
+{{< highlight jsx >}}
 return (
     <div>
       <Head>
@@ -74,7 +74,7 @@ return (
       </footer>
     </div>
   );
-```
+{{< / highlight >}}
 
 ## Semantic Styling
 
@@ -84,7 +84,7 @@ After your content is being injected in the page, you should be staring at a wal
 
 Using the [global.css](https://nextjs.org/docs/basic-features/built-in-css-support) file provided by next, we can globally style semantic elements like this:
 
-```
+{{< highlight css >}}
 body {
      /* CSS Styles */
 }
@@ -120,7 +120,7 @@ main li {
 main a {
      /* CSS Styles */
 }
-```
+{{< / highlight >}}
 
 ## Page Extensibility
 
@@ -128,7 +128,7 @@ One of the design concepts I wanted to implement was the idea that you could add
 
 Taking advantage of the the [getStaticProps](https://nextjs.org/docs/basic-features/data-fetching) function, we can use node to read the directory, exclude unrelated files, and generate links in our homepage.
 
-```
+{{< highlight javascript >}}
 // CONFIG['pageExcludes'] = [ 'app', 'api', 'index']
 
   function getPages() {
@@ -149,15 +149,15 @@ Taking advantage of the the [getStaticProps](https://nextjs.org/docs/basic-featu
   return {
     props: { html, pages },
   };
-```
+{{< / highlight >}}
 
-```
+{{< highlight jsx >}}
       <footer> 
         <div id="pages">
           { pages.map((p) => p ? <a key={p} href={`/${p}`}>{ p }</a> : null }
         </div>
       </footer>
-```
+{{< / highlight >}}
 
 ### Gathering my Blog Post Data
 
@@ -165,7 +165,7 @@ With this feature, I can now create unique CMS pages to extend my static site. L
 
 I'll be using the [axios](https://github.com/axios/axios) library to make a request to the DEV api, gather my posts data, and send those props to the page for static site generation. Again, taking advantage of the [getStaticProps](https://nextjs.org/docs/basic-features/data-fetching) hook.
 
-```
+{{< highlight javascript >}}
 // pages/blog.js
 
 export async function getStaticProps() {
@@ -206,9 +206,9 @@ export async function getStaticProps() {
     props: { articles }
   }
 }
-```
+{{< / highlight >}}
 
-```
+{{< highlight jsx >}}
         <section>
 
         { (articles.length === 0) && <p>No Blog Posts</p>}
@@ -229,7 +229,7 @@ export async function getStaticProps() {
         }
 
         </section>
-```
+{{< / highlight >}}
 
 !["Portfolio Footer Pages"](/images/7f6ed5e9-a9b8-45bb-b91a-43686d661b42.png)
 

@@ -19,7 +19,7 @@ Before we dive into my configuration, here are the tools I use that help me spee
 
 ## The Variables
 
-```
+{{< highlight bash >}}
 # EDITOR
 export EDITOR="vi";
 export VISUAL="vi";
@@ -29,7 +29,7 @@ export DOCS="/Users/henryunite/Library/Mobile Documents/com~apple~CloudDocs";
 
 # Work Directory
 export WORK="/Users/henryunite/Projects/bicycletransit";
-```
+{{< / highlight >}}
 
 Pretty straightforward, but these are what I use to:
 
@@ -39,7 +39,7 @@ Pretty straightforward, but these are what I use to:
 
 ## Credentials
 
-```
+{{< highlight bash >}}
 # Credentials Fetcher
 function username() {
   export PASS_BACK_PATH=$(pwd);
@@ -54,13 +54,13 @@ function password() {
   echo $(decrypt-file $(fzf) | grep "Password:" | cut -d ":" -f2) | pbcopy;
   cd $PASS_BACK_PATH && unset PASS_BACK_PATH;
 }
-```
+{{< / highlight >}}
 
 There are so many chrome extensions, keychains, any ways to access your passwords. I personally encrypt my passwords in my cloud storage so I can access them by utilizing a `aes-256-cbc` decryption tool.
 
 ## File Formatting
 
-```
+{{< highlight bash >}}
 ## Code Formatter
 function format-file() {
   export FILENAME="$(basename $@)";
@@ -83,42 +83,42 @@ function format-file() {
 
   unset FILENAME; unset EXTENSION;
 }
-```
+{{< / highlight >}}
 
 File formatter that handles the languages I use on a day-to-day basis. It gets the job done for most file types including JSON, YAML, and even markdown.
 
 ## Spell Check
 
-```
+{{< highlight bash >}}
 ## Spellcheck
 function spellcheck-file() {
   npx spellchecker-cli --files $@;
 }
-```
+{{< / highlight >}}
 
 When you're writing as much markdown documentation as me, you'll want an easy way to spell check your files.
 
 ## What the Commit
 
-```
+{{< highlight bash >}}
 ## What the Commit
 function wtf() { git commit -am "$(curl http://whatthecommit.com/index.txt)"; }
-```
+{{< / highlight >}}
 
 This is a gimmick, but if you ever just want to commit file changes and you just don't know what to say in the commit message, [what the commit](http://whatthecommit.com/) is just a fun resource to get whacky commit messages.
 
 ## Cheat Sheet
 
-```
+{{< highlight bash >}}
 ## Cheat
 function cheat(){ curl https://cheat.sh/"$@"; }
-```
+{{< / highlight >}}
 
 There are so many times I use a CLI tool and can't remember simple commands and options that it takes to perform certain tasks. Check out [cheat.sh](https://cheat.sh) if you're looking for an easy way to reference different CLI tools.
 
 ## Document Generation
 
-```
+{{< highlight bash >}}
 ## Generate Markdown
 function generate-doc() { 
   cp -rf . /tmp;
@@ -142,7 +142,7 @@ function generate-slide() {
   cp -rf . /tmp;
   open "/tmp/$1.html";
 }
-```
+{{< / highlight >}}
 
 I use markdown to write documentation all the time, but if I need to send a coworker a document or present a slide with content that is written in markdown, I'll use [pandoc](https://pandoc.org) to generate these intermediary file formats.
 
@@ -150,7 +150,7 @@ It's really nice to leverage CSS when I want to make my documents look nice or n
 
 ## File Encryption
 
-```
+{{< highlight bash >}}
 ## Encrypt : aes-256-cbc
 function encrypt-file() {
   if [ -z $@ ]
@@ -172,16 +172,16 @@ function decrypt-file() {
     openssl enc -aes-256-cbc -d -in $@;
   fi
 }
-```
+{{< / highlight >}}
 
 It's nice to have a quick way to encrypt and decrypt files with sensitive information.
 
 ## Homebrew
 
-```
+{{< highlight bash >}}
 ## Homebrew Install Script
 function install-homebrew() { /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; }
-```
+{{< / highlight >}}
 
 This is just in my configuration in the event that I just want to install [homebrew](https://brew.sh) without copying and pasting the install script from the website.
 
@@ -189,9 +189,9 @@ If I have a new Mac I need to setup, it'll make the setup so much easier.
 
 ## Version Managers
 
-```
+{{< highlight bash >}}
 source ~/.nvmrc;
 source ~/.rvmrc;
-```
+{{< / highlight >}}
 
 I've been using `nvm` and `rvm` to manage my node and ruby installations. They append rc scripts to load into your base rc file which I extract into their own designated files and load them in at the end.

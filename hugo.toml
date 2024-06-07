@@ -7,8 +7,7 @@ theme = 'hugo-bearblog'
 main = [
   { url = "/certifications", name = "Awards & Certifications" },
   { url = "mailto:unitehenry@gmail.com", name = "Email" },
-  { url = "https://linkedin.com/in/unitehenry", name = "LinkedIn" },
-  { url = "https://github.com/unitehenry", name = "GitHub" }
+  { url = "https://linkedin.com/in/unitehenry", name = "LinkedIn" }
 ]
 
 [params]

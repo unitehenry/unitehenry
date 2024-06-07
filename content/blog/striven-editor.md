@@ -32,7 +32,7 @@ So these editors are obviously top tier editors, but usually have some licensing
 
 ## Undertaking a Custom Built Editor
 
-After working on [mentions](/article/mentions) and exploring all these different editor solutions, I formed an understanding of the underlying concepts that went into the inner workings of a WYSIWYG editor. My manager was convinced that I was capable of taking on the project of building a tailored editor for Striven, as it would be worth the time and investment to work on this component in house.
+After working on implementing the ability to mention users in posts and exploring all these different editor solutions, I formed an understanding of the underlying concepts that went into the inner workings of a WYSIWYG editor. My manager was convinced that I was capable of taking on the project of building a tailored editor for Striven, as it would be worth the time and investment to work on this component in house.
 
 We decided to work on the component in phases.
 

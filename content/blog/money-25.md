@@ -1,8 +1,7 @@
 +++
 title = "Money (25)"
-date = "2024-06-02"
+date = "2024-06-07"
 description = "How I Think About Money"
-# draft = true
 tags = []
 +++
 

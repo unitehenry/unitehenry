@@ -32,16 +32,16 @@ If I run out of money, I will [cut my burn](#cut-your-burn) and make more so I c
 
 ## Don't Own Things
 
-> Until we have begun to go without them, we fail to realise how unnecessary many things are. We’ve been using them not because we needed them but because we had them. -- Seneca
+> Until we have begun to go without them, we fail to realize how unnecessary many things are. We’ve been using them not because we needed them but because we had them. -- Seneca
 
-Here is a list of my material possesions:
+Here is a list of my material possessions:
 - Phone
 - Laptop
 - Clothes
 
-Material possesions are just liabilities in life that burn your money. You have to insure them. You have to perform maintenance on them. They widen your exposure to risk. You have to consider traveling with them, and they weigh you down.
+Material possessions are just liabilities in life that burn your money. You have to insure them. You have to perform maintenance on them. They widen your exposure to risk. You have to consider traveling with them, and they weigh you down.
 
-Personally owning a house or a car is a scam. They are just ways to to expose your life to economic conditions. The only place you *need* a house or a car is the suburbs.
+Personally owning a house or a car is a scam. They are just ways to expose your life to economic conditions. The only place you *need* a house or a car is the suburbs.
 
 **Do not live in the suburbs!**
 
@@ -69,8 +69,8 @@ That being said, we are people, and there are things that are nice to have.
 
 Here are the things that I find nice to have:
 - Designer hoodies
-- Dining at nice restaraunts
-- Living in a nice condo with amentities
+- Dining at nice restaurants
+- Living in a nice condo with amenities
 
 These are things that I don't care if I have or not, but I'll spend my money on if it's within my means.
 
@@ -86,7 +86,7 @@ I want to mitigate my exposure to risk in different economic conditions. So if i
 
 The last position I want to be in: is one where I have a 12-month lease and the market dictates that I can't continue to afford it halfway through.
 
-Another reason short-term living is great, is because I don't need to buy furniture. Furniture is another material possesion (like cars and houses) that weigh you down.
+Another reason short-term living is great, is because I don't need to buy furniture. Furniture is another material possession (like cars and houses) that weigh you down.
 
 ## Eating Out
 
@@ -106,7 +106,7 @@ If something makes my life more comfortable living, and it's within my means to 
 
 It is important to invest in good people that surround you.
 
-It is intagible, and hard to judge when to do, but I enjoy buying gifts and treating people to nice dinners that have done right by me.
+It is intangible, and hard to judge when to do, but I enjoy buying gifts and treating people to nice dinners that have done right by me.
 
 It is a great way to spread joy, show appreciation, and plant seeds of favor that compound into the future. I don't count my returns, and I don't keep score.
 
@@ -131,7 +131,7 @@ There are things in life you just have to pay for whether you like it or not, bu
 For the most part, all my money goes to two major categories: rent and food.
 
 Since these are the two major categories of my spend, then I have two ways to cut my burn:
-- [Move to a cheaper place to live (roomates if necessary)](#short-term-living)
+- [Move to a cheaper place to live (roommates if necessary)](#short-term-living)
 - [Don't go out to eat or get food delivered](#eating-out)
 
 Another tip to cutting your burn, is just don't leave the house. If you're not leaving the house, you're not burning money unnecessarily.

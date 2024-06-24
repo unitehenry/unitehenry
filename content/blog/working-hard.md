@@ -1,6 +1,6 @@
 +++
 title = "Working Hard"
-draft = true
+draft = false
 date = "2024-06-23"
 +++
 
@@ -26,7 +26,7 @@ I have three principles that help guide me in making sure that I'm "moving the n
 
 ### Pick Up The Phone
 
-You should always be talking to your customers. Also, a customer is not just an end user of the product. It can be a stakeholder, an engineer, a product manager, etc.
+You should always be talking to your customers. A customer can be more than just an end user; they could be a stakeholder, an engineer, or a product manager.
 
 This guiding principle is used to ensure that you are always working on the right thing. Don't wait for answers, or make assumptions; pick up the phone, and call the person who is expecting the deliverable you're working on.
 
@@ -51,7 +51,7 @@ When you deliver value, the needle moves.
 
 ## Zoom Out
 
-I used to think everything had to be done all in one day. What I've learned is that it's important to set milestones.
+I used to think everything had to be done in a single day. What I've learned is that it's important to set milestones.
 
 Instead of tunnel visioning and heads down coding, set a goal like: "by the end of the week, we will have this one thing done." It is the typical "under promise, over deliver." But I treat it as room to maneuver. It doesn't matter how I get there, as long as I deliver it by the time all the stakeholders agreed upon.
 

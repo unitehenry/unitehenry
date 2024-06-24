@@ -1,6 +1,6 @@
 +++
 title = "Working Hard"
-draft = false
+draft = true
 date = "2024-06-23"
 +++
 

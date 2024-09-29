@@ -1,5 +1,5 @@
 <a href="{{ "" | relURL }}">Home</a>
-{{ range .Site.Menus.main }}
+{{ range sort .Site.Menus.main "Weight" "asc" }}
 <a href="{{ .URL }}">{{ .Name }}</a>
 {{ end }}
 {{ with .Site.GetPage "/blog" }}

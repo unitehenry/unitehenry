@@ -12,7 +12,7 @@ title = "Home"
 **Software Engineer** -- October 2023
 
 - Implemented a card authorization rules engine to weigh fraud and credit risk factors on every transaction, and prevented over $500K from being defrauded.
-- Leveraged the Plaid Link SDK to enable manual account linking with micro-deposit verification, and unlocked over a $1M of spend anually.
+- Leveraged the Plaid Link SDK to enable manual account linking with micro-deposit verification, and unlocked over a $1M of spend annually.
 - Added roles and permissions to the platform, and enabled the ability for multiple users to log into a cardholder's account which increased MAU by 10%.
 
 https://atlascard.com
@@ -37,7 +37,7 @@ First engineer that built the MVP for a startup which went on to [raise a $35M s
 
 **Full Stack Developer** -- September 2021
 
-- Built the original MVP that scaled the company from hundreds to thousands of users, by bootstrapping the intitial version of the product on Firebase.
+- Built the original MVP that scaled the company from hundreds to thousands of users, by bootstrapping the initial version of the product on Firebase.
 - Automated the process of generating thousands of insurance documents which would manually take an average of 20 minutes to do, by building headless chrome automations to login and download documents from the carrier’s portal.
 - Designed a system for teams to deploy autonomously, by adopting micro-frontend architecture and backends for frontends
 

@@ -5,9 +5,10 @@ theme = 'hugo-bearblog'
 
 [menus]
 main = [
-  { url = "/certifications", name = "Awards & Certifications" },
-  { url = "mailto:unitehenry@gmail.com", name = "Email" },
-  { url = "https://linkedin.com/in/unitehenry", name = "LinkedIn" }
+  { url = "/certifications", name = "Awards & Certifications", weight = 0 },
+  { url = "/game-dev", name = "Game Dev", weight = 1 },
+  { url = "https://linkedin.com/in/unitehenry", name = "LinkedIn", weight = 2 },
+  { url = "mailto:unitehenry@gmail.com", name = "Email", weight = 3 }
 ]
 
 [params]

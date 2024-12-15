@@ -9,11 +9,16 @@ title = "Home"
 
 # Atlas
 
+Joined a five-person engineering team that was able to 13x revenue in a year and bring the company to a [$27M Series B](https://www.prnewswire.com/news-releases/atlas-card-raises-fresh-capital-and-announces-major-company-milestones-302328649.html).
+
 **Software Engineer** -- October 2023
 
-- Implemented a card authorization rules engine to weigh fraud and credit risk factors on every transaction, and prevented over $500K from being defrauded.
-- Leveraged the Plaid Link SDK to enable manual account linking with micro-deposit verification, and unlocked over a $1M of spend annually.
-- Added roles and permissions to the platform, and enabled the ability for multiple users to log into a cardholder's account which increased MAU by 10%.
+- **Manual Bank Account Linking** -- Leveraged the Plaid Link SDK to enable manual account linking with micro-deposit verification, and unlocked over a $1M of spend annually.
+- **Card Authorization Fraud Engine** -- Implemented a card authorization rules engine to weigh fraud and credit risk factors on every transaction, and prevented over $500K from being defrauded.
+- **Authorized Users** -- Built the ability to add additional cardmembers to primary cardholders through additional integration with the card processor that increased daily active users by 25%.
+- **Onboarding on behalf of a Client** -- Launched a partnership program with wealth management firms to onboard their clients to Atlas on their client's behalf, resulting in over a $1M of annual spend added to the program.
+- **Virtual Card Spend Limits** -- Utilizing the card authorization fraud engine to allow users to set spending limits on their virtual cards.
+- **Automated Line Sizing** -- Created an automated task to pull credit factors like Transunion reports and payment history to adjust the spending power of members on a daily basis.
 
 https://atlascard.com
 

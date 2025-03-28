@@ -15,7 +15,7 @@ Joined a five-person engineering team that was able to 13x revenue in a year and
 
 - **Manual Bank Account Linking** -- Leveraged the Plaid Link SDK to enable manual account linking with micro-deposit verification, and unlocked over a $1M of spend annually.
 - **Card Authorization Fraud Engine** -- Implemented a card authorization rules engine to weigh fraud and credit risk factors on every transaction, and prevented over $500K from being defrauded.
-- **Authorized Users** -- Built the ability to add additional cardmembers to primary cardholders through additional integration with the card processor that increased daily active users by 25%.
+- **Authorized Users** -- Built the ability to add additional cardmembers to primary cardholders through additional integration with the card processor that increased daily active users by 25% and added over $100K of annual revenue in the first year.
 - **Onboarding on behalf of a Client** -- Launched a partnership program with wealth management firms to onboard their clients to Atlas on their client's behalf, resulting in over a $1M of annual spend added to the program.
 - **Virtual Card Spend Limits** -- Utilizing the card authorization fraud engine to allow users to set spending limits on their virtual cards.
 - **Automated Line Sizing** -- Created an automated task to pull credit factors like Transunion reports and payment history to adjust the spending power of members on a daily basis.

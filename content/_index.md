@@ -28,7 +28,7 @@ July 2023
 
 Launched an MVP on Product Hunt that made it to the front page, by offering a service that manages agreements on your websites and apps with a low-friction click to accept e-signature alternative.
 
-https://www.producthunt.com/products/satosa
+https://www.producthunt.com/products/satosa ([demo](https://youtu.be/IpOJEfsZC9Q))
 
 # LULA
 
@@ -63,7 +63,7 @@ June 2019
 
 Maintained and contributed to an open source WYSIWYG editor as an internship project that made it to production and was adopted by the company I was working at.
 
-https://github.com/striven-erp/striven-editor
+https://github.com/striven-erp/striven-editor ([mirror](https://github.com/unitehenry/striven-editor))
 
 # Striven
 

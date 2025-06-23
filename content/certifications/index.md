@@ -2,6 +2,8 @@
 title = 'Awards & Certifications'
 +++
 
+[Principles of Secure Coding](https://www.coursera.org/account/accomplishments/certificate/FP6NKFRXNQA9) -- June 2025
+
 [Build a Modern Computer from First Principles: Nand to Tetris Part II](https://www.coursera.org/account/accomplishments/certificate/EG4ZXUGG4DHY) -- May 2024
 
 [Build a Modern Computer from First Principles: Nand to Tetris](https://www.coursera.org/account/accomplishments/certificate/EG4ZXUGG4DHY) -- February 2024

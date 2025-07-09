@@ -2,6 +2,8 @@
 title = 'Awards & Certifications'
 +++
 
+[Identifying Security Vulnerabilities](https://www.coursera.org/account/accomplishments/certificate/XWM4SSJMI9WZ) -- July 2025
+
 [Principles of Secure Coding](https://www.coursera.org/account/accomplishments/certificate/FP6NKFRXNQA9) -- June 2025
 
 [Build a Modern Computer from First Principles: Nand to Tetris Part II](https://www.coursera.org/account/accomplishments/certificate/EG4ZXUGG4DHY) -- May 2024

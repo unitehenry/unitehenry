@@ -2,6 +2,8 @@
 title = 'Awards & Certifications'
 +++
 
+[Exploiting and Securing Vulnerabilities in Java Applications](https://www.coursera.org/account/accomplishments/certificate/X0RGOQNZA939) -- August 2025
+
 [Identifying Security Vulnerabilities](https://www.coursera.org/account/accomplishments/certificate/XWM4SSJMI9WZ) -- July 2025
 
 [Principles of Secure Coding](https://www.coursera.org/account/accomplishments/certificate/FP6NKFRXNQA9) -- June 2025

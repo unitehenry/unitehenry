@@ -2,6 +2,8 @@
 title = 'Awards & Certifications'
 +++
 
+[Cybersecurity Fundamentals](https://courses.edx.org/certificates/c5d060bf9ee54f2a969cf3c20e7f2e01) -- September 2025
+
 [Exploiting and Securing Vulnerabilities in Java Applications](https://www.coursera.org/account/accomplishments/certificate/X0RGOQNZA939) -- August 2025
 
 [Identifying Security Vulnerabilities](https://www.coursera.org/account/accomplishments/certificate/XWM4SSJMI9WZ) -- July 2025

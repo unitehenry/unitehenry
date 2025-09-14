@@ -48,13 +48,13 @@ com/example/api/
 
 As your codebase grows and your tests grow with it, any tests that require external dependencies may become resource constrained. For example, attempting to run parallel tests against the same instance of postgres. There are two bottlenecks that can occur in this situation:
 - Limited amounts of tests can run in parallel
-- Limited DB connections can be opened and shared across tests
+- Limited database connections can be opened and shared across tests
 
 What if we leveraged the build matrix mechanism to run these tests in parallel? Each domain would run it's tests with it's own DB instance and in isolation of other domains.
 
-## Parameterizing Test Jobs
+## Parametrizing Test Jobs
 
-If you're using [GitHub Actions](https://docs.github.com/en/actions), it's common to use [reusable workflows](https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows) to reuse existing snippets of steps to run your jobs. This is especially useful when parameterizing the domain of tests that we intend to run.
+If you're using [GitHub Actions](https://docs.github.com/en/actions), it's common to use [reusable workflows](https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows) to reuse existing snippets of steps to run your jobs. This is especially useful when parametrizing the domain of tests that we intend to run.
 
 ### Gradle Example
 
@@ -97,6 +97,8 @@ As an example, you may have a gradle project and a CI you want run gradle tests 
 ## Domain Matrix
 
 ```yaml
+# .github/workflows/feature
+
 jobs:
   test:
     uses: .github/workflows/test.yml
@@ -127,15 +129,14 @@ def is_domain_covered(domain, test_domains):
   return False
 
 if __name__ == '__main__':
-  with open('.github/workflows/test.yml', 'r') as workflow_file:
+  with open('.github/workflows/feature.yml', 'r') as workflow_file:
     workflow = yaml.load(workflow_file, Loader=yaml.FullLoader)
 
-    test_domains = workflow['jobs']['unit_test']['strategy']['matrix']['domain']
+    test_domains = workflow['jobs']['test']['strategy']['matrix']['domain']
 
     domains = os.listdir('com/example/src')
 
-    for domain in charge_domains:
-      if '.java' in domain: continue
+    for domain in domains:
       if not is_domain_covered(domain, test_domains):
         raise Exception(f'The {domain} domain is not covered in tests')
 ```
@@ -241,6 +242,6 @@ Given the gradle example earlier, build tools might have parallel testing mechan
 - Threads used for tests constrained by the amount of CPU cores the runners have
 
 When parallelizing  tests by project domain, here are some of the benefits that these changes yield:
-- Physical isolation of resources and domains per set of tests, reducing resource constraints like DB connections
+- Physical isolation of resources and domains per set of tests, reducing resource constraints like database connections
 - Run more tests in parallel, reducing the time it takes for developers to get feedback on their features
 - Less tests ran on a per feature basis, reducing billable CI minutes

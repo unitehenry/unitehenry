@@ -1,5 +1,4 @@
 +++
-draft = true
 title = "Domain-Driven Test Pipelines"
 date = "2025-09-13"
 description = "Parallelizing tests by domain with matrix strategies."

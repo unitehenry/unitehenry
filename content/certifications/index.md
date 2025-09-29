@@ -2,6 +2,8 @@
 title = 'Awards & Certifications'
 +++
 
+[Supervised Machine Learning: Regression and Classification](https://www.coursera.org/account/accomplishments/certificate/UUGV2AMMABWL) -- September 2025
+
 [Cybersecurity Fundamentals](https://courses.edx.org/certificates/c5d060bf9ee54f2a969cf3c20e7f2e01) -- September 2025
 
 [Exploiting and Securing Vulnerabilities in Java Applications](https://www.coursera.org/account/accomplishments/certificate/X0RGOQNZA939) -- August 2025

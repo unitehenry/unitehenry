@@ -2,6 +2,8 @@
 title = 'Awards & Certifications'
 +++
 
+[Advanced Learning Algorithms](https://www.coursera.org/account/accomplishments/certificate/2NFGR0K38U59) -- November 2025
+
 [Supervised Machine Learning: Regression and Classification](https://www.coursera.org/account/accomplishments/certificate/UUGV2AMMABWL) -- September 2025
 
 [Cybersecurity Fundamentals](https://courses.edx.org/certificates/c5d060bf9ee54f2a969cf3c20e7f2e01) -- September 2025

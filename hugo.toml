@@ -15,3 +15,11 @@ main = [
 description = "Henry is a Software Engineer in San Francisco"
 favicon = "favicon.ico"
 hideMadeWithLine = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      wrapStandAloneImageWithinParagraph = false
+      [markup.goldmark.parser.attribute]
+        block = true
+        title = true

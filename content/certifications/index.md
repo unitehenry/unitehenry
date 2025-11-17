@@ -2,6 +2,10 @@
 title = 'Awards & Certifications'
 +++
 
+[Machine Learning](https://www.coursera.org/account/accomplishments/specialization/certificate/71VDWZPFM6HF) -- November 2025
+
+[Unsupervised Learning, Recommenders, Reinforcement Learning](https://www.coursera.org/account/accomplishments/certificate/ZKW9BNS6YCZT) -- November 2025
+
 [Advanced Learning Algorithms](https://www.coursera.org/account/accomplishments/certificate/2NFGR0K38U59) -- November 2025
 
 [Supervised Machine Learning: Regression and Classification](https://www.coursera.org/account/accomplishments/certificate/UUGV2AMMABWL) -- September 2025

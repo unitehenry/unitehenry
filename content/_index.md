@@ -5,7 +5,7 @@
 title = "Home"
 +++
 
-*currently building a credit card company*
+*produce more than you consume*
 
 # Atlas
 

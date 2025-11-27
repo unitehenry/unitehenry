@@ -2,6 +2,8 @@
 title = 'Awards & Certifications'
 +++
 
+[Software Engineering: Introduction](https://courses.edx.org/certificates/90195e1a6efb474ab47b5e6134f4bbfd) -- November 2025
+
 [Machine Learning](https://www.coursera.org/account/accomplishments/specialization/certificate/71VDWZPFM6HF) -- November 2025
 
 [Unsupervised Learning, Recommenders, Reinforcement Learning](https://www.coursera.org/account/accomplishments/certificate/ZKW9BNS6YCZT) -- November 2025

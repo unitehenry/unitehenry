@@ -2,6 +2,8 @@
 title = 'Awards & Certifications'
 +++
 
+[Introduction to Intellectual Property](https://www.coursera.org/account/accomplishments/certificate/VQAKXZYPQOAB) -- November 2025
+
 [Ethics, Technology and Engineering](https://www.coursera.org/account/accomplishments/certificate/B1345R2882A7) -- November 2025
 
 [Software Engineering: Introduction](https://courses.edx.org/certificates/90195e1a6efb474ab47b5e6134f4bbfd) -- November 2025

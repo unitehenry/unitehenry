@@ -2,7 +2,7 @@
 title = 'Awards & Certifications'
 +++
 
-[Data Privacy Fundamentals](https://www.coursera.org/account/accomplishments/certificate/66AFKLGR140W)
+[Data Privacy Fundamentals](https://www.coursera.org/account/accomplishments/certificate/66AFKLGR140W) -- November 2025
 
 [Introduction to Intellectual Property](https://www.coursera.org/account/accomplishments/certificate/VQAKXZYPQOAB) -- November 2025
 

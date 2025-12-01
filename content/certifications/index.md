@@ -2,6 +2,8 @@
 title = 'Awards & Certifications'
 +++
 
+[Data Privacy Fundamentals](https://www.coursera.org/account/accomplishments/certificate/66AFKLGR140W)
+
 [Introduction to Intellectual Property](https://www.coursera.org/account/accomplishments/certificate/VQAKXZYPQOAB) -- November 2025
 
 [Ethics, Technology and Engineering](https://www.coursera.org/account/accomplishments/certificate/B1345R2882A7) -- November 2025

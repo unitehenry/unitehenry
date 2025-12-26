@@ -2,6 +2,8 @@
 title = 'Awards & Certifications'
 +++
 
+[Computer Graphics](https://courses.edx.org/certificates/74fecb63cfba4b32b8bcd2aa0ed8a616) -- December 2025
+
 [Data Privacy Fundamentals](https://www.coursera.org/account/accomplishments/certificate/66AFKLGR140W) -- November 2025
 
 [Introduction to Intellectual Property](https://www.coursera.org/account/accomplishments/certificate/VQAKXZYPQOAB) -- November 2025

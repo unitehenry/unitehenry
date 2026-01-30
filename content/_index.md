@@ -9,10 +9,10 @@ title = "Home"
 
 # Atlas
 
-**Software Engineer** -- October 2023
+**Senior Software Engineer** -- October 2023
 
 - Contributed to a five-person engineering team that was able to 13x revenue in a year and bring the company to a [$27M Series B](https://www.prnewswire.com/news-releases/atlas-card-raises-fresh-capital-and-announces-major-company-milestones-302328649.html).
-- Built the ability to add additional cardmembers to primary cardholders' accounts through integration with the card processor, increasing daily active users by 25% and adding over $100K in annual revenue in the first year.
+- Launched a business card product that increased spend volume by $10M in the first year.
 - Launched a partnership program with wealth management firms that enabled wealth managers to onboard their clients and add over $1M in annual spend to the platform.
 
 https://atlascard.com

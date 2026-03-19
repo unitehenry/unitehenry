@@ -2,6 +2,8 @@
 title = 'Awards & Certifications'
 +++
 
+[Algorithms: Design and Analysis, Part 1](https://courses.edx.org/certificates/bf385d01b795491a80be6c99c57d7c4e) -- March 2026
+
 [Computer Graphics](https://courses.edx.org/certificates/74fecb63cfba4b32b8bcd2aa0ed8a616) -- December 2025
 
 [Data Privacy Fundamentals](https://www.coursera.org/account/accomplishments/certificate/66AFKLGR140W) -- November 2025

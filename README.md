@@ -1,3 +1,5 @@
+[OpenPod](https://github.com/unitehenry/openpod) - An opencode plugin that spins up a dedicated virtual machine for each session to isolate agent work.
+
 [One-Click Agent Browser Deploy](https://github.com/unitehenry/amish) - Give your agent a persistent browser that you can access too with one-click DigitalOcean deployments.
 
 [Agent Browser FastMCP](https://github.com/unitehenry/agent-browser-mcp) - Proxy agent-browser MCP stdio over HTTP/SSE using FastMCP.
